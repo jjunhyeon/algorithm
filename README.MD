@@ -6,20 +6,17 @@
 운영체제는 Windows10 언어는 Java8 기준으로 IntelliJ IDEA 2022.1.2를 활용해 작성했으며 논리적 사고력 향상을 위해 개인적으로 사용하는 Repository 이다. 
 
 ### 설치 방법
-자바와 인텔리제이는 구글링을 통해 가능하며 소스코드도 개인 환경에서 그대로 import 또는 clone 하면 된다.
-
-### 사용법
-프로젝트의 사용 방법과 API 문서를 설명합니다. 이 항목에서는 사용자와 개발자를 위한 간단한 사용법을 설명합니다.
+자바와 인텔리제이는 구글링을 통해 가능하며 소스코드도 개인 환경에서 그대로 import 또는 clone 하면 된다.(사실 코드 복붙 하면 된다.)
 
 ### 기여 방법
 제 개인 블로그에 댓글을 달아 , 이메일 
 (ex : 1번 문제는 더 나은 방법으로 풀 수 있다 ... , 이건 왜 이렇게 하셧어요?? , 시간복잡도를 더 효율적을 풀 수 있는 방법 공유 등)
 
 ### 참고 사이트
-1번 : [프로그래머스](https://programmers.co.kr/)
-2번 : [해커랭크](https://www.hackerrank.com/)
-3번 : [인프런](https://www.inflearn.com/)
-4번 : [백준](https://www.acmicpc.net/)
+1. [프로그래머스](https://programmers.co.kr/)
+2. [해커랭크](https://www.hackerrank.com/)
+3. [인프런](https://www.inflearn.com/)
+4. [백준](https://www.acmicpc.net/)
 
 ### 연락처
 이메일 : sonjs01@naver.com
