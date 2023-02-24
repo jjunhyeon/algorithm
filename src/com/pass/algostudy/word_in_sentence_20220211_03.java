@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /*
-* String Sentence 파라미터로 받아
+* String Sentence 파라미터로 받아  
 * 가장 긴 단어를 출력해야한다.
 * indexOf() - 특정 문자나 문자열에서 해당하는 문자의 인덱스 값을 반환하고 찾지 못했을 경우 "-1" return
 * lastIndexOf() - 특정 문자나 문자열에서 해당하는 문자를 뒤에서 부터 찾는다. (indexOf와 동일하며 뒤에서 찾는다는 속성이 추가)
