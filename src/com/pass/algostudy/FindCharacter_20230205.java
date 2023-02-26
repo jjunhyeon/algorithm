@@ -2,7 +2,7 @@ package com.pass.algostudy;
 
 import java.util.Scanner;
 
-public class find_character_20230205_01 {
+public class FindCharacter_20230205 {
 
     static class Main {
         public int solution(String str, char t) {

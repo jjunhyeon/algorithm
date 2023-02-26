@@ -1,6 +1,5 @@
 package com.pass.algostudy;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -10,7 +9,7 @@ import java.util.Scanner;
 * lastIndexOf() - 특정 문자나 문자열에서 해당하는 문자를 뒤에서 부터 찾는다. (indexOf와 동일하며 뒤에서 찾는다는 속성이 추가)
 */
 
-public class word_in_sentence_20220211_03 {
+public class WordInSentence_20220211 {
     static class Main {
         public String solution(String sentence) {
             /*

@@ -16,7 +16,7 @@ import java.util.Scanner;
 *  왼쪽 문자가 문자가 아닌경우, 오른쪽 문자가 문자가 아닌 경우를 제외하고 else에 처리르 해야한다.
 *  그리고 문자열이 아닌 케이스를 확인했을때 먼저 처리를 해야한다 라는 생각을 할 필요가 있는 문제다.
  * */
-public class word_flip2_20230222_05 {
+public class WordFlip2_20230222 {
     static class Main {
         public String solution(String str) {
             String answer;

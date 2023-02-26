@@ -10,7 +10,7 @@ import java.util.Scanner;
 * StringBuilder를 사용해 reverse : 뒤집기
 * String.valueOf : 배열을 스트링화 시킨다.
 * */
-public class word_flip_20230212_04 {
+public class WordFlip_20230212 {
     static class Main {
         public ArrayList<String> solution(long wordCount, String[] str) {
             ArrayList<String> answer = new ArrayList<>();
