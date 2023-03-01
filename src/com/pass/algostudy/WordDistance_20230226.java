@@ -2,11 +2,11 @@ package com.pass.algostudy;
 
 import java.util.Scanner;
 
-// 문제 : 문자거리
-// 파라미터로 들어온 char c와 String str에 동일한 char 문자와의 거리를 출력하는 문제
-// char c와 다른 배열의 값들을 비교해본다.
-// 첫 시도 해결못함 --
-// 방법1 : 왼쪽 for문 한번 , 오른쪽 for문 순회 후 비교해서 처리
+/* 문제 : 문자거리
+ 파라미터로 들어온 char c와 String str에 동일한 char 문자와의 거리를 출력하는 문제
+ char c와 다른 배열의 값들을 비교해본다.
+ 첫 시도 해결못함 --
+ 방법1 : 왼쪽 for문 한번 , 오른쪽 for문 순회 후 비교해서 처리*/
 public class WordDistance_20230226 {
     static class Main {
         public int[] solution(String str,char c) {
