@@ -1,4 +1,4 @@
-package com.pass.algostudy;
+package com.pass.algostudy.string;
 
 import java.util.Arrays;
 import java.util.Scanner;

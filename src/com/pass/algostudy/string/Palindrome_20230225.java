@@ -1,4 +1,4 @@
-package com.pass.algostudy;
+package com.pass.algostudy.string;
 
 import java.util.Locale;
 import java.util.Scanner;
