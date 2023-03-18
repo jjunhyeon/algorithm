@@ -40,7 +40,7 @@ public class RockPaperScissors_20230305 {
     }
 
     /*
-     * 값 입력받기 (이게 더 어려운듯)
+     * 값 입력받기
      * */
     public static void main(String[] args) {
         Main T = new Main();
