@@ -4,6 +4,9 @@ import java.util.Stack;
 
 /*
  * 막대기
+ * ) 를 만났지만 이전 char 값이 ( 라면 cutting 
+ * ) 를 만났지만 이전 char 값이 ) 라면 그건 이전 (를 닫는것이다
+ * 라는걸 생각할 수 있어야했다.
  * */
 public class Stick_20230402 {
     static class Main {
