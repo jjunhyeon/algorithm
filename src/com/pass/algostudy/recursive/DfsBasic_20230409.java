@@ -24,7 +24,7 @@ public class DfsBasic_20230409 {
             //System.out.print(root.data + " ");
             DFS(root.lt);
             // 중위순회
-            System.out.print(root.data + " ");
+            //System.out.print(root.data + " ");
             DFS(root.rt);
             // 후위순회
             System.out.print(root.data + " ");
