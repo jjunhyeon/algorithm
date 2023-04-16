@@ -7,36 +7,54 @@ import java.util.Scanner;
  * 캐시 메모리
  * LRU(Least Recently Used)가장 최근에 사용하지 않을것을 제거하는 알고리즘을 사용한다
  *
+ * 1. Catch miss
+ * 해야할 작업이 캐시에 없는 상태로 새로운 작업을 사용한다면 모든 작업이 뒤로 밀리고 5번 작업은 캐시의 맨 앞에 위치하게 된다.
+ *
+ * 2. Cache Hit
+ * 해야할 작업이 캐시에 있는 상태로 위상태에서 Cache Hit가 되고 새로 들어온 작업의 번호가 가장 앞으로 오며 그 이전 숫자가 한칸씩 밀리게 된다.
  * */
 //FIXME 다시 풀어야할 문제
 public class LRU_20230410 {
     // 실제 Solution
     static class Main {
-        public int[] solution(int m, int n, int[] array) {
+        public String solution(int m, int n, int[] array) {
+            String answer = "";
             int[] result = new int[m];
-
-            for (int i = 0; i < n; i++) {
-                for(int j=0; j < m; j++) {
-                    if(i==0 && j==0){
-                        result[0] = array[0];
-                    } else if (array[i] == result[j]) {
-                        // 일치하는 i 인덱스을 기준으로 뒤로 밀어야한다.
-                        int target = j;
-                        // result의 i값을 기준으로 직전 값으로 대체한다.
-                        while (target > 0) {
-                            result[target] = result[target - 1];
-                            target--;
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (j > 0 && result.length > 1) {
+                        int num = j;
+                        Boolean isExistSameNum = false;
+                        // result에 신규로 들어온 array[j]가 있는지 검사해야함
+                        for (int k = 0; k < result.length; k++) {
+                            if (result[k] == array[j]) {
+                                // result안에 같은 값이 존재할 시
+                                while (k > 0) {
+                                    result[k] = result[k - 1];
+                                    isExistSameNum = true;
+                                    k--;
+                                }
+                            }
                         }
-                        // 0번째 값은 array[lt]로 대체한다.
-                    } else {
-                        if(j !=0) {
-                            result[j] = result[j - 1];
+                        if (num > 0 && !isExistSameNum) {
+                            // 존재하지 않는다면 아레 while문 처리
+                            if (num > result.length) {
+                                num = result.length - 1;
+                            }
+                            while (num >= 1) {
+                                result[num] = result[num - 1];
+                                num--;
+                            }
                         }
                     }
+                    result[0] = array[j];
                 }
-                array[0] = array[i];
             }
-            return result;
+            for(int z=0; z< result.length; z++){
+                answer += result[z] + " ";
+            }
+
+            return answer;
         }
     }
 
@@ -52,6 +70,6 @@ public class LRU_20230410 {
         for (int i = 0; i < n; i++) {
             array[i] = kb.nextInt();
         }
-        System.out.println(Arrays.toString(T.solution(m, n, array)));
+        System.out.println((T.solution(m, n, array)));
     }
 }
