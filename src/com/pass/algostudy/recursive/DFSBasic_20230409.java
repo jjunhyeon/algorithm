@@ -13,7 +13,7 @@ import java.sql.SQLOutput;
 * 왼쪽자식 -> 오른쪽 자식 -> 부모
 *
 * */
-public class DfsBasic_20230409 {
+public class DFSBasic_20230409 {
     static class Main {
         Node root;
     public void DFS(Node root){
