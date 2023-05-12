@@ -1,4 +1,4 @@
-package com.pass.algostudy.recursive;
+package com.pass.algostudy.dfs;
 
 
 /*

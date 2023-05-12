@@ -1,6 +1,4 @@
-package com.pass.algostudy.recursive;
-
-import java.sql.SQLOutput;
+package com.pass.algostudy.dfs;
 
 /*
 * DFS(깊이 우선 탐색) 기초
