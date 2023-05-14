@@ -1,4 +1,4 @@
-package com.pass.algostudy.recursive;
+package com.pass.algostudy.dfs;
 
 public class SubSet_20230429 {
     static class Main{
