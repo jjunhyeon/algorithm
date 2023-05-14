@@ -6,10 +6,7 @@ import java.util.Scanner;
 
 /*
  * 투 포인터 알고리즘을 사용해야하는 문제
- * 처음엔 그냥 정렬했음
- *
- * 실제 기대하는 알고리즘을 사용해서 효율성을 올려야함
- * 아래 코드는 그냥 합쳐서 정렬하는 코드
+ * 두 배열이 정렬이 되어 있어야한다.
  *
  * */
 public class CommonElement_20230513 {
@@ -21,7 +18,7 @@ public class CommonElement_20230513 {
             int p1 = 0, p2 = 0;
 
             while (p1 < k && p2 < j) {
-                if (kArray[p1] <= jArray[p2]) {
+                if (kArray[p1] < jArray[p2]) {
                     if(kArray[p1] == jArray[p2]){
                         answer.add(kArray[p1]);
                     }
