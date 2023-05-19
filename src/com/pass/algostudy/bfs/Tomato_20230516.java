@@ -14,80 +14,78 @@ import java.util.Scanner;
  * 모두 익을때까지의 최소 날짜를 출력해보자.
  * */
 public class Tomato_20230516 {
+    static int column,row;
+    static int[][] tomato; // 토마토의 정보
+    static int[][] dis; // 토마토의 정보를 바탕으로 [][] 를 채워나갈 떄 사용할 배열
+    static int[] dx = {-1,0,1,0};
+    static int[] dy = {0,1,0,-1};
+    static Queue<Point> Q = new LinkedList<>();
 
-    static class Mato {
-        private int x, y;
-        Mato(int x, int y) {
+    static class Point{
+        private int x,y;
+        Point(int x, int y){
             this.x = x;
             this.y = y;
         }
     }
-
-    static int[] xMove = {-1, 0, 1, 0};
-    static int[] yMove = {0, 1, 0, -1};
-    static int[][] tomato;
-    static int[][] dis;
-    static int result = 0;
-    static Queue<Mato> Q = new LinkedList<>();
-
-    static class Main {
-        public static void BFS(int x, int y) {
-            while (!Q.isEmpty()) {
-                Mato tmp = Q.poll();
-                for (int i = 0; i < 4; i++) {
-                    // tmp.x -> q에 들어있는 1,1 지점의 tomato 좌표의 x값
-                    // tmp.y -> q에 들어있는
-                    int xm = tmp.x + xMove[i];
-                    int ym = tmp.y + yMove[i];
-                    // 익은 토마토 근접의 토마토가 익지 않은 상태라면
-                    if (xm >= 0 && xm < x && ym >= 0 && ym < y && tomato[xm][ym] == 0) {
-                        // 가장 오래 걸리기 위해 만든 dis 이차원 배열에 날짜 식별을 위해 +1 을 해서 처리한다.
-                        tomato[xm][ym] = 1;
-                        Q.offer(new Mato(xm, ym));
-                        dis[xm][ym] = dis[tmp.x][tmp.y]+1;
+    static class Main{
+        public static void DFS(){
+            // 이미 큐에 1,1 포인트 지점의 정보가 담겨 있음
+            while(!Q.isEmpty()){
+                Point tmp = Q.poll();
+                for(int i=0; i<4; i++){
+                    int xPoint = tmp.x + dx[i];
+                    int yPoint = tmp.y + dy[i];
+                    if(xPoint >= 0 && xPoint < column && yPoint >=0 && yPoint < row && tomato[xPoint][yPoint] == 0){
+                        tomato[xPoint][yPoint] = 1;
+                        Q.offer(new Point(xPoint,yPoint));
+                        //  day 구분을 위해 새 배열 dis에서 +1 처리를 한다.
+                        dis[xPoint][yPoint] = dis[tmp.x][tmp.y] + 1;
                     }
                 }
             }
         }
     }
 
+
     public static void main(String[] args) {
         Main T = new Main();
         Scanner kb = new Scanner(System.in);
-        // 6행 4열의 이차원 배열
-        int y = kb.nextInt();
-        int x = kb.nextInt();
-        tomato = new int[x][y];
-        dis = new int[x][y];
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
+        row = kb.nextInt();
+        column =  kb.nextInt();
+
+        tomato = new int[column][row];
+        dis = new int[column][row];
+        for(int i=0; i<column; i++){
+            for(int j=0; j<row; j++){
                 tomato[i][j] = kb.nextInt();
-                if (tomato[i][j] == 1) {
-                    Q.offer(new Mato(i, j));
+                // i,j가 1일 시 미리 큐에 담아 놓는다.
+                if(tomato[i][j] == 1){
+                    Q.offer(new Point(i,j));
                 }
             }
         }
-
-        T.BFS(x, y);
+        T.DFS();
+        // flag
         boolean flag = true;
-        // 종료조건
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
-                // 0 익지 않은 토마토가 있다면
-                if (tomato[i][j] == 0) {
+        int result = Integer.MIN_VALUE;
+        for(int i=0; i<column; i++){
+            for(int j=0; j<row; j++){
+                if(tomato[i][j] == 0 ){
                     flag = false;
                 }
             }
         }
-        if (flag) {
-            for (int i = 0; i < x; i++) {
-                for (int j = 0; j < y; j++) {
+
+        if(flag){
+            for(int i=0; i<column; i++){
+                for(int j=0; j<row; j++){
                     result = Math.max(result, dis[i][j]);
                 }
             }
-            System.out.println(result);
-        } else {
-            System.out.println(-1);
+        } else{
+            result = -1;
         }
+        System.out.println(result);
     }
 }
