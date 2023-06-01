@@ -1,4 +1,4 @@
-package com.pass.algostudy.graph;
+package com.pass.algostudy.greedy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
