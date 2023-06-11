@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 /*
 * 케빈 베이컨의 6단계 인싸들의 법칙
-*
 * */
 public class Kevin6Rule_1389_2030611 {
     static int result = Integer.MAX_VALUE;
