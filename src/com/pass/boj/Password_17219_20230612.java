@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Map;
 
 /*
 * 비밀번호 찾기
@@ -14,21 +15,18 @@ public class Password_17219_20230612 {
         String[] counts = br.readLine().split(" ");
         int infoCount = Integer.parseInt(counts[0]);
         int pCount =  Integer.parseInt(counts[1]);
-        String[] passwordInfo = new String[pCount];
 
-        HashMap<String, String> info = new HashMap<>();
+        Map<String,String> map = new HashMap<>();
         for (int i = 0; i < infoCount; i++) {
             String[] st = br.readLine().split(" ");
-            info.put("domain", st[0]);
-            info.put("password", st[1]);
+            map.put(st[0], st[1]);
         }
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(); // String Builder를 활용해 문자열을 수정하는것이 성능적으로 더 효율적이다.
         for (int i = 0; i < pCount; i++) {
             String p = br.readLine();
-            if(p.equals(info.get("domain"))){
-                sb.append(info.get("password")).append('\n');
-            }
+            sb.append(map.get(p)).append('\n');
         }
+        System.out.println(sb);
     }
 }
