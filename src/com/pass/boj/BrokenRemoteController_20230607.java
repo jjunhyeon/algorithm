@@ -1,7 +1,7 @@
 package com.pass.boj;
 
-        import java.util.ArrayList;
-        import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /*
  * 고장난 리모컨
