@@ -3,8 +3,6 @@ package com.pass.boj;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -16,17 +14,18 @@ import java.util.Queue;
 public class Tomato2_7569_20230617 {
     // bfs 탐색 처리를 위한 toamto 클래스 생성
     public static class Tomato {
-        int x, y;
+        int x, y, h;
 
-        Tomato(int x, int y) {
+        Tomato(int x, int y, int h) {
             this.x = x;
             this.y = y;
+            this.h = h;
         }
     }
 
     static int resultDay = Integer.MIN_VALUE;
     // 토마토 2차원 배열 정보
-    static int[][] matoInfo;
+    static int[][][] matoInfo;
     static Queue<Tomato> qt = new LinkedList<>();
     // 최소 날짜를 구하기 위한 토마토정보 카피 이차원배열
     //static int[][] distanceMato;
@@ -35,8 +34,9 @@ public class Tomato2_7569_20230617 {
     static int H = 0;
 
     // 상하좌우 + (앞,뒤) 추가해야함.
-    public static ArrayList<Integer> xArray = new ArrayList<>(Arrays.asList(-1, 0, 1, 0));
-    public static ArrayList<Integer> yArray = new ArrayList<>(Arrays.asList(0, 1, 0, -1, 0, 0));
+    public static int[] xArray = {-1, 0, 1, 0, 0, 0};
+    public static int[] yArray = {0, 1, 0, -1, 0, 0};
+    public static int[] hArray = {0, 0, 0, 0, 1, -1};
 
     public static void main(String[] args) throws IOException {
         // 입력값 처리
@@ -47,20 +47,17 @@ public class Tomato2_7569_20230617 {
         N = Integer.parseInt(info[1]); // 컬럼
         H = Integer.parseInt(info[2]); // * 높이 정보
 
-        // 배열에 앞 뒤 정보를 탐색하기 위한 앞뒤(행 정보)를 추가한다.
-        xArray.add(N);
-        xArray.add(-N);
-
-        matoInfo = new int[N * H][M]; // 행 * 높이 , 열 정보로 2차원 배열 생성
+        matoInfo = new int[N][M][H]; // 행 * 높이 , 열 정보로 2차원 배열 생성
         //distanceMato = new int[N * H][M];
         // 두번째줄부터는 상자에 대한 Value 정보
-        for (int i = 0; i < N * H; i++) {
-            String[] rowMato = br.readLine().split(" ");
-            for (int j = 0; j < M; j++) {
-                // 0 = 익지 않는 토마토, 1 = 익은 토마토 , -1 = 토마토가 들어있지 않음
-                matoInfo[i][j] = Integer.parseInt(rowMato[j]);
-                if (matoInfo[i][j] == 1) {
-                    qt.offer(new Tomato(i, j));
+        for (int k = 0; k < H; k++) {
+            for (int i = 0; i < N; i++) {
+                String[] rowMato = br.readLine().split(" ");
+                for (int j = 0; j < M; j++) {
+                    matoInfo[i][j][k] = Integer.parseInt(rowMato[j]);
+                    if (matoInfo[i][j][k] == 1) {
+                        qt.offer(new Tomato(i, j, k));
+                    }
                 }
             }
         }
@@ -70,36 +67,45 @@ public class Tomato2_7569_20230617 {
     }
 
     public static int TomatoBFS() {
+        int Height = 1;
         while (!qt.isEmpty()) {
             Tomato targetT = qt.poll();
             int tx = targetT.x;
             int ty = targetT.y;
+            int th = targetT.h;
             for (int i = 0; i < 6; i++) {
-                int nearX = tx + xArray.get(i);
-                int nearY = ty + yArray.get(i);
-
+                int nearX = tx + xArray[i];
+                int nearY = ty + yArray[i];
+                int nearH = th + hArray[i];
                 // 정상 범위의 값 + 탐색하는 위치의 토마토가 감염되지 않았다면
-                if (nearX >= 0 && nearX < N * H && nearY >= 0 && nearY < M && matoInfo[nearX][nearY] == 0) {
-                    matoInfo[nearX][nearY] = 1;
-                    qt.offer(new Tomato(nearX, nearY));
-                    matoInfo[nearX][nearY] = matoInfo[tx][ty] + 1;
+                if (nearX >= 0 && nearX < N * Height && nearY >= 0 && nearY < M && nearH >= 0 && nearH < H
+                        && matoInfo[nearX][nearY][nearH] == 0) {
+                    matoInfo[nearX][nearY][nearH] = 1;
+                    qt.offer(new Tomato(nearX, nearY, nearH));
+                    matoInfo[nearX][nearY][nearH] = matoInfo[tx][ty][th] + 1;
                 }
             }
         }
-
         // Array의 최대값을 구해야함.
-        for (int i = 0; i < N * H; i++) {
+        for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                if (matoInfo[i][j] == 0) {
-                    return -1;
+                for (int k = 0; k < H; k++) {
+                    if (matoInfo[i][j][k] == 0) {
+                        return -1;
+                    }
                 }
-                resultDay = Math.max(matoInfo[i][j], resultDay);
             }
         }
-        if (resultDay == 1) {
-            return 0;
-        } else {
-            return resultDay - 1;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                for (int k = 0; k < H; k++) {
+                    resultDay = Math.max(matoInfo[i][j][k], resultDay);
+                }
+            }
         }
+        // 최대 값이 1이라면 원래부터 모두 익어있었다는 것
+        if (resultDay == 1) return 0;
+            // (최대 값 - 1) --> 걸린 일수
+        else return (resultDay - 1);
     }
 }
