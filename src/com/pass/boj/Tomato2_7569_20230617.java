@@ -27,8 +27,7 @@ public class Tomato2_7569_20230617 {
     // 토마토 2차원 배열 정보
     static int[][][] matoInfo;
     static Queue<Tomato> qt = new LinkedList<>();
-    // 최소 날짜를 구하기 위한 토마토정보 카피 이차원배열
-    //static int[][] distanceMato;
+
     static int M = 0;
     static int N = 0;
     static int H = 0;
@@ -86,7 +85,7 @@ public class Tomato2_7569_20230617 {
                 }
             }
         }
-        // Array의 최대값을 구해야함.
+        // Array의 최대값을 구해야함
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 for (int k = 0; k < H; k++) {
@@ -103,9 +102,12 @@ public class Tomato2_7569_20230617 {
                 }
             }
         }
-        // 최대 값이 1이라면 원래부터 모두 익어있었다는 것
-        if (resultDay == 1) return 0;
-            // (최대 값 - 1) --> 걸린 일수
-        else return (resultDay - 1);
+
+        // 최대 값 1 -> 원래 익었음
+        if (resultDay == 1) {
+            return 0;
+        } else {
+            return resultDay - 1;
+        }
     }
 }
