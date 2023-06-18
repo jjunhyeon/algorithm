@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 /*
@@ -19,10 +18,6 @@ public class Main {
     }
 
     private static int makeSum(int k) {
-
-        if(storage[k] > 0) {
-            return storage[k];
-        }
 
         if (k == 1) {
             return storage[k] = 1;
