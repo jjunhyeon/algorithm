@@ -3,9 +3,7 @@ package com.pass.boj;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Scanner;
 
 /*
  * 포켓몬마스터 이다솜
