@@ -1,4 +1,4 @@
-package com.pass.boj;
+package com.pass.boj.class3;
 
 import java.util.Scanner;
 /*

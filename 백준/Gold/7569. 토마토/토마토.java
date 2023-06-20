@@ -7,23 +7,23 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /*
- * 백준 7569번 토마토
+            * 백준 7569번 토마토
  * 기존 풀었던 문제랑 요구사항 같음
  * 달라진조건 ) 상하좌우앞뒤 모두 익는 날짜 구하기
  * */
-public class Main {
-    // bfs 탐색 처리를 위한 toamto 클래스 생성
-    public static class Tomato {
-        int x, y, h;
+    public class Main {
+        // bfs 탐색 처리를 위한 toamto 클래스 생성
+        public static class Tomato {
+            int x, y, h;
 
-        Tomato(int x, int y, int h) {
-            this.x = x;
-            this.y = y;
-            this.h = h;
+            Tomato(int x, int y, int h) {
+                this.x = x;
+                this.y = y;
+                this.h = h;
+            }
         }
-    }
 
-    static int resultDay = Integer.MIN_VALUE;
+        static int resultDay = Integer.MIN_VALUE;
     // 토마토 2차원 배열 정보
     static int[][][] matoInfo;
     static Queue<Tomato> qt = new LinkedList<>();
