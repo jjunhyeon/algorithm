@@ -1,11 +1,9 @@
 package com.pass.programmers.level2;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
-
 /*
- * 연속된 부분 순열
+ * 연속된 부분 순열, 프로그래머스(178870)
  * */
 public class Subsequence_20230710 {
     public static void main(String[] args) {
