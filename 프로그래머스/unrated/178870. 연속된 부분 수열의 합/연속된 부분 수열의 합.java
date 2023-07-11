@@ -3,28 +3,25 @@ import java.util.Arrays;
 
 class Solution {
     public int[] solution(int[] arr, int k) {
-        Arrays.sort(arr); // 정렬
-        int sum = 0;
+         int sum = 0;
         int[] result = new int[2];
-        ArrayList<Integer> answerList = new ArrayList<>();
-        for(int i=0; i<arr.length; i++){
-            sum += arr[i];
-            answerList.add(i); // 인데스번호 넣기
-            if(sum == k){
-                if(answerList.size() == 1){
-                  result[0] = result[1] = answerList.get(0);
-                  break;
+        result[0] = -1;
+        result[1] = -1;
+        int start = 0;
+        int end = 0;
+        for (int i = 0; i < arr.length; i++) {
+            end = i;
+            sum += arr[end]; // 값이 작으면 오른쪽으로 한칸씩
+
+            while(sum > k){
+                sum -= arr[start++]; // 값이 더 커지면 다시 왼쪽으로 한칸
+            }
+
+            if (sum == k) {
+                if ((result[0] == -1 && result[1] == -1) || (end - start < result[1] - result[0])) {
+                    result[0] = start;
+                    result[1] = end;
                 }
-                // 비어있지 않고 교체할 수 있다면
-                if(answerList.isEmpty() || (answerList.size() > (result[1] - result[0] + 1))){
-                    result[0] = answerList.get(0);
-                    result[1] = answerList.get(i);
-                    answerList.clear();
-                    sum = 0;
-                }
-            } else if(sum > k){
-                sum = 0;
-                answerList.clear();
             }
         }
         return result;
