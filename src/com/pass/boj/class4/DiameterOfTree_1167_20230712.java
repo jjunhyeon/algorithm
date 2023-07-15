@@ -39,8 +39,6 @@ public class DiameterOfTree_1167_20230712 {
 
         // Node의 수
         int N = Integer.parseInt(st.nextToken());
-        // 정답 N까지의 거리를 구하기 위함
-        int result = 0;
         answer = new int[N+1];
         for(int i=0; i<=N; i++){ // N번까지 값을 넣아야하므로 <= 처리
             // edge에 Edge ArrayList 초기화
