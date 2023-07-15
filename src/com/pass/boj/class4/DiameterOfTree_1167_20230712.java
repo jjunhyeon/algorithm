@@ -13,6 +13,8 @@ public class DiameterOfTree_1167_20230712 {
     static ArrayList<ArrayList<Node>> nodeInfo = new ArrayList<ArrayList<Node>>();
     // 정답 정보
     static int[] answer;
+    static boolean flag = false;
+    static int result = 0;
     public static class Node implements Comparable<Node>{
         // 정점과 가중치 정보
         int vertex, weight;
@@ -65,19 +67,18 @@ public class DiameterOfTree_1167_20230712 {
             }
         }
         // 임의의 두점이므로 최대값을 구하면 됨
-        for(int i=1; i<nodeInfo.size(); i++){
-            int tmp = BFS(i);
-            result = Math.max(tmp,result);
-        }
-        System.out.println(result);
+        int val = BFS(1);
+        System.out.println(val);
     }
 
     private static int BFS(int V) {
-        Arrays.fill(answer, Integer.MAX_VALUE);
-        int result = 0;
+        Arrays.fill(answer, 0);
+        int idx = 0;
 
         PriorityQueue<Node> nq = new PriorityQueue<>();
         nq.offer(new Node(V,0));
+        // 초기값 SET
+        answer[V] = 1;
         while(!nq.isEmpty()){
             Node target = nq.poll();
             int nowVertex = target.vertex;
@@ -85,7 +86,7 @@ public class DiameterOfTree_1167_20230712 {
             // 1번 노드부터 시작
             for(Node tn : nodeInfo.get(nowVertex)){
                 // 거리비교
-                if(answer[tn.vertex] > nowWeight + target.weight){
+                if(answer[tn.vertex] == 0){
                     // 최대 가중치로 업데이트 한다.
                     nq.offer(new Node(tn.vertex,nowWeight + tn.weight));
                     answer[tn.vertex] = tn.weight + nowWeight;
@@ -94,10 +95,25 @@ public class DiameterOfTree_1167_20230712 {
         }
 
         for(int i=1; i<answer.length; i++){
-            if(answer[i] == Integer.MAX_VALUE){
+            if(answer[i] == 0){
                 continue;
             }
-            result = Math.max(result,answer[i]);
+            if(result < answer[i]){
+                idx = i;
+            }
+            result = Math.max(result, answer[i]);
+        }
+
+        if(!flag){
+            flag = true;
+            BFS(idx);
+        } else{
+            for(int i=1; i<answer.length; i++){
+                if(answer[i] == Integer.MAX_VALUE){
+                    continue;
+                }
+                Math.max(result, answer[i]);
+            }
         }
         return result;
     }
