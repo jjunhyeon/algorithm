@@ -37,15 +37,15 @@ class Solution {
                 if (row.charAt(j) == 'S') {
                     startX = i;
                     startY = j;
-                    realMap[i][j] = 2;
+                    realMap[i][j] = 1;
                 } else if (row.charAt(j) == 'L') { // levar 좌표
                     leverX = i;
                     leverY = j;
-                    realMap[i][j] = 2;
+                    realMap[i][j] = 1;
                 } else if (row.charAt(j) == 'E') { // EXIT 좌표
                     endX = i;
                     endY = j;
-                    realMap[i][j] = 2;
+                    realMap[i][j] = 1;
                 } else if (row.charAt(j) == 'O') {
                     realMap[i][j] = 1;
                 }
@@ -94,7 +94,6 @@ class Solution {
         }
         // 초기 방문 정보 업데이트
         visited[startX][startY] = true;
-
         while (!nodeQ.isEmpty()) {
             Node nowNode = nodeQ.poll();
             int nowX = nowNode.x;
@@ -102,22 +101,16 @@ class Solution {
             for (int i = 0; i < 4; i++) {
                 int movedX = nowX + xRange[i];
                 int movedY = nowY + yRange[i];
-
                 // 움직인 X,Y좌표 validate
-                if (movedX >= 0 && movedX < N && movedY >= 0 && movedY < M && !visited[movedX][movedY] && (realMap[movedX][movedY] == 1 || (realMap[movedX][movedY] ==2))) {
+                if (movedX >= 0 && movedX < N && movedY >= 0 && movedY < M && !visited[movedX][movedY] && (realMap[movedX][movedY] == 1)) {
+                    // 레버를 갈떈 exit를 , exit를 갈때는 level를 지날수 있음
                     visited[movedX][movedY] = true;
                     nodeQ.offer(new Node(movedX, movedY));
                     distanceMap[movedX][movedY] = distanceMap[nowX][nowY] + 1;
                 }
             }
         }
-
         int result = distanceMap[targetX][targetY];
-
-        if (result == 0) {
-            return -1;
-        } else {
-            return result;
-        }
+        return result == 0 ? -1 : result;
     }
 }
