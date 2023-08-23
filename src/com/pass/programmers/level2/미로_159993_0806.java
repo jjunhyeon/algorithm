@@ -46,15 +46,15 @@ public class 미로_159993_0806 {
                 if (row.charAt(j) == 'S') {
                     startX = i;
                     startY = j;
-                    realMap[i][j] = 2;
+                    realMap[i][j] = 1;
                 } else if (row.charAt(j) == 'L') { // levar 좌표
                     leverX = i;
                     leverY = j;
-                    realMap[i][j] = 2;
+                    realMap[i][j] = 1;
                 } else if (row.charAt(j) == 'E') { // EXIT 좌표
                     endX = i;
                     endY = j;
-                    realMap[i][j] = 2;
+                    realMap[i][j] = 1;
                 } else if (row.charAt(j) == 'O') {
                     realMap[i][j] = 1;
                 }
@@ -63,7 +63,6 @@ public class 미로_159993_0806 {
         // bfs에선 i 값을 기준으로 target좌표까지의 거리를 구한다.
         // 1 -> start to lever bfs start
         // 2 -> lever to end bfs end
-
         int getStartToLeverDistance = bfs(startX, startY, visited, leverX, leverY, false);
         if (getStartToLeverDistance == -1) {
             return -1;
@@ -106,7 +105,7 @@ public class 미로_159993_0806 {
                 int movedX = nowX + xRange[i];
                 int movedY = nowY + yRange[i];
                 // 움직인 X,Y좌표 validate
-                if (movedX >= 0 && movedX < N && movedY >= 0 && movedY < M && !visited[movedX][movedY] && (realMap[movedX][movedY] == 1 || (realMap[movedX][movedY] ==2))) {
+                if (movedX >= 0 && movedX < N && movedY >= 0 && movedY < M && !visited[movedX][movedY] && (realMap[movedX][movedY] == 1)) {
                     // 레버를 갈떈 exit를 , exit를 갈때는 level를 지날수 있음
                     visited[movedX][movedY] = true;
                     nodeQ.offer(new Node(movedX, movedY));
@@ -115,10 +114,6 @@ public class 미로_159993_0806 {
             }
         }
         int result = distanceMap[targetX][targetY];
-        if (result == 0) {
-            return -1;
-        } else {
-            return result;
-        }
+        return result == 0 ? -1 : result;
     }
 }
