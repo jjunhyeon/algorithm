@@ -1,8 +1,5 @@
 package com.pass.programmers.level2;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /*
  * 스킬트리
  * */
