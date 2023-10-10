@@ -52,7 +52,7 @@ public class 여행경로_43238 {
             String destinationAirPort = tickets[i][1];
             // 방문하지 않았다면
             if (!isVisitedArray[i]) {
-                // 이전 출발지 또는 도착지 정보를 가져와야함 result[i-1]에 있음, 출발지는 ICN 고정
+                // 처음엔 출발지 도착지 함께 처리 출발지는 ICN 고정
                 if (depth == 0 && departuresAirPort.equals("ICN")) {
                     isVisitedArray[i] = true;
                     resultArray[0] = departuresAirPort;
@@ -60,9 +60,9 @@ public class 여행경로_43238 {
                     getAirPortPathByDfs(tickets, depth + 1);
                     isVisitedArray[i] = false;
                 }
-                
+
                 // 출발지 이후
-                if(depth > 0){
+                if (depth > 0) {
                     String beforeAirPort = resultArray[depth];
                     // 이전 도착지와, 새로운 시작지가 같은곳
                     if (beforeAirPort.equals(departuresAirPort)) {
