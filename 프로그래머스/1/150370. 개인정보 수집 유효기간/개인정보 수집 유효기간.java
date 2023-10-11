@@ -54,9 +54,5 @@ class Solution {
             LocalDate date = LocalDate.parse(today,formatter);
             this.expiredDay = date.minusMonths(addMonth);
         }
-        @Override
-        public String toString(){
-            return this.addMonth + " " + this.today + " " + this.expiredDay;
-        }
     }
 }
