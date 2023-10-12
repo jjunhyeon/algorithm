@@ -34,7 +34,7 @@ class Solution {
             
         }
         Collections.sort(answerList);
-        return answerList.toArray(new String[0]);
+        return answerList.toArray(String[]::new);
     }
     
     public  void setMenuCombinations(String order, StringBuilder stBuilder, int depth, boolean[] visited){
