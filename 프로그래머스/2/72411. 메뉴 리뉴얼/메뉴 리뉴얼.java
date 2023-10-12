@@ -10,7 +10,6 @@ class Solution {
         for(int n : course) answerMap.put(n, new HashMap<>());
         for(int n : course) set.add(n);
     
-        // 길이순으로 정렬
         for(String order : orders){
             char[] arr = order.toCharArray();
             Arrays.sort(arr);
@@ -25,7 +24,7 @@ class Solution {
                 max = Math.max(max,temp.get(key));   
             }
             
-            if(max < 2){ // 2미만 패스
+            if(max < 2){
                 continue;
             } 
             
@@ -37,8 +36,6 @@ class Solution {
         Collections.sort(answerList);
         return answerList.toArray(new String[0]);
     }
-    
-    
     
     public  void setMenuCombinations(String order, StringBuilder stBuilder, int depth, boolean[] visited){
         int len = stBuilder.length();
