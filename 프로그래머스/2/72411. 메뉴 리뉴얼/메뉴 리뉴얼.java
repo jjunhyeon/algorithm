@@ -1,60 +1,68 @@
 import java.util.*;
+
 class Solution {
-    Map<Integer,Map<String, Integer>> answerMap = new HashMap<>();// 길이, 메뉴조합, 반복횟수
-    Set<Integer> set = new HashSet<>(); // course
-    int dfsMaxValue;
+    public static Map<Integer, Map<String, Integer>> resultMap = new HashMap<>();
+    public static Set<Integer> courseSet = new HashSet<>();
+    public static int dfsMaxValue = 0;
+    public static ArrayList<String> resultList = new ArrayList<>();
+    
     public String[] solution(String[] orders, int[] course) {
         
-        dfsMaxValue = course[course.length-1];
-        List<String> answerList = new ArrayList<>();
-        for(int n : course) answerMap.put(n, new HashMap<>());
-        for(int n : course) set.add(n);
-    
-        for(String order : orders){
-            char[] arr = order.toCharArray();
-            Arrays.sort(arr);
+        // course 배열의 각 원소는 자연수가 오름차순으로 정렬되어 있다.
+        dfsMaxValue = course[course.length - 1];
+        // course value만큼 map의 길이와 key값 설정
+        for (int c : course) {
+            resultMap.put(c, new HashMap<>());
+            courseSet.add(c);
+        }
+
+        for (String order : orders) {
+            // acb -> abc 정렬 처리 후 조합 찾아야한다.
+            char[] beforeSortChar = order.toCharArray();
+            Arrays.sort(beforeSortChar);
             boolean[] visited = new boolean[order.length()];
-            setMenuCombinations(new String(arr), new StringBuilder(), 0, visited);    
+            getStringCombination(new String(beforeSortChar), new StringBuilder(), 0, visited);
         }
-        
-        for(int n : course){
-            int max = 0; 
-            Map<String, Integer> temp = answerMap.get(n);
-            for(String key  : temp.keySet()){
-                max = Math.max(max,temp.get(key));   
+
+        for (int n : course) {
+            int maxValue = 0;
+            Map<String, Integer> eachCourseMap = resultMap.get(n);
+            for (String key : eachCourseMap.keySet()) {
+                maxValue = Math.max(maxValue, eachCourseMap.get(key));
             }
-            
-            if(max < 2){
-                continue;
-            } 
-            
-            for(String key : temp.keySet()){
-                if(temp.get(key) == max) answerList.add(key);
+
+            // 최소 2명 이상에게서 선택 받아야 정답처리
+            if (maxValue < 2) continue;
+
+            for (String key : eachCourseMap.keySet()) {
+                // 최대길이의 course라면 resultList에 add
+                if (maxValue == eachCourseMap.get(key)) resultList.add(key);
             }
-            
         }
-        Collections.sort(answerList);
-        return answerList.toArray(String[]::new);
+        Collections.sort(resultList);
+        return resultList.toArray(String[]::new);
     }
     
-    public  void setMenuCombinations(String order, StringBuilder stBuilder, int depth, boolean[] visited){
-        int len = stBuilder.length();
-        if(set.contains(len)){
-            String temp = stBuilder.toString();
-            int cnt = answerMap.get(len).getOrDefault(temp, 0) + 1;
-            answerMap.get(len).put(temp, cnt);
-            if(len == dfsMaxValue) return;
+    public static void getStringCombination(String order, StringBuilder builderResult, int depth, boolean[] visited) {
+
+        int conditionLength = builderResult.length();
+        // course의 길이만큼의 length가 되었으면
+        if (courseSet.contains(conditionLength)) {
+            String builderString = builderResult.toString();
+            int cnt = resultMap.get(conditionLength).getOrDefault(builderString, 0) + 1;
+            resultMap.get(conditionLength).put(builderString, cnt);
+            // builder의 길이가 course의 최대 길이라면 back
+            if (dfsMaxValue == conditionLength) return;
         }
-        
-        for(int j=depth; j<order.length(); j++){
-          if(!visited[j]){
-              visited[j] = true;
-              stBuilder.append(order.charAt(j));
-              setMenuCombinations(order, stBuilder, j + 1, visited);
-              visited[j] = false;
-              stBuilder.deleteCharAt(stBuilder.length()-1);
+
+        for (int i = depth; i < order.length(); i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                builderResult.append(order.charAt(i));
+                getStringCombination(order, builderResult, i + 1, visited);
+                visited[i] = false;
+                builderResult.deleteCharAt(builderResult.length() - 1);
             }
         }
     }
-    
 }
