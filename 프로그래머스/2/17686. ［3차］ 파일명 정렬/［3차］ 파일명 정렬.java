@@ -1,4 +1,5 @@
 // 09:28 시작
+// 11:25 end
 import java.util.*;
 
 class Solution {
@@ -62,32 +63,30 @@ class Solution {
                 String headS1 = s1.substring(0,indexOfFirstDigitS1);
                 String headS2 = s2.substring(0,indexOfFirstDigitS2);
                 
-                String NumberS1 = s1.substring(indexOfFirstDigitS1,indexOfLastNumberS1);
-                String NumberS2 = s2.substring(indexOfFirstDigitS2,indexOfLastNumberS2);
-                
-                if(NumberS1.length() > 5){
-                    NumberS1 = NumberS1.substring(0,5);
-                }
-                
-                if(NumberS2.length() > 5){
-                    NumberS2 = NumberS2.substring(0,5);
-                }
-                
                 int headResult = headS1.compareToIgnoreCase(headS2);
-                
-                
-                if(headResult == 0){
+                if(headResult != 0 ){
+                    return headResult;
+                } else {
+                    String NumberS1 = s1.substring(indexOfFirstDigitS1,indexOfLastNumberS1);
+                    String NumberS2 = s2.substring(indexOfFirstDigitS2,indexOfLastNumberS2);
+
+                    if(NumberS1.length() > 5){
+                        NumberS1 = NumberS1.substring(0,5);
+                    }
+
+                    if(NumberS2.length() > 5){
+                        NumberS2 = NumberS2.substring(0,5);
+                    }
+
                     int leftS1 = Integer.parseInt(NumberS1);
                     int rightS2 = Integer.parseInt(NumberS2);
                     if(leftS1 > rightS2){
                         return 1;
                     } else if(leftS1 < rightS2){
                         return -1;
-                    } else {
-                        return 0;
-                    }
-                } 
-                return headResult;
+                    } 
+                    return 0;
+                }
             }
         });
         return answerList.toArray(String[] :: new);
