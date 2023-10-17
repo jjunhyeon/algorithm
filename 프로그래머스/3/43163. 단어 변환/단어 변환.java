@@ -1,15 +1,13 @@
 import java.util.*;
 
-// 10:20 시작  ~
+// 10:20 시작  ~ 11:10
 class Solution {
     public static int answer = Integer.MAX_VALUE;
-    public int solution(String begin, String target, String[] words) {
-        
+    public int solution(String begin, String target, String[] words) { 
         // 애초에 target에 해당하는 word가 words 배열에 없음
         if(!Arrays.asList(words).contains(target)){
             return 0;
         } 
-        
         boolean[] visited = new boolean[words.length];
         getShortestWordChangePathValueByDfs(begin,target,0,words,visited);
         return answer;
@@ -18,12 +16,11 @@ class Solution {
     
     public static void getShortestWordChangePathValueByDfs(String currentString, String target, int depth, String[] words, boolean[] visited){
         
-        // 끝
+        // 종료조건
         if(currentString.equals(target)){
             answer = Math.min(answer, depth);
             return ;
         }
-        
         for(int i=0; i< words.length; i++){
             // 바꿀 수 있고, 방문안했음
             if(canConvertString(currentString, words[i]) && !visited[i]){
