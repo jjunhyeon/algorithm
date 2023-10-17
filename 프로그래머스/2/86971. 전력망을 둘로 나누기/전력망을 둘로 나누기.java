@@ -1,7 +1,6 @@
-// 12 : 35 ~ 
+// 12 : 35 ~ 15: 30
 import java.util.*;
 class Solution {
-    static boolean[] visited;
     static int answer = Integer.MAX_VALUE;
     static Map<Integer,ArrayList<Integer>> myNode = new HashMap<Integer,ArrayList<Integer>>();
     public int solution(int n, int[][] wires) {
@@ -12,24 +11,19 @@ class Solution {
             myNode.get(wire[0]).add(wire[1]);
             myNode.get(wire[1]).add(wire[0]);
         }
-        
-        int idx = 1;
         for(int[] wire : wires)  {
             // 자르고
             myNode.get(wire[0]).remove(Integer.valueOf(wire[1]));
             myNode.get(wire[1]).remove(Integer.valueOf(wire[0]));
-            
             answer =  Math.min(answer,bfs(n,wire[0]));
-            
             // 다시 원복
             myNode.get(wire[0]).add(wire[1]);
             myNode.get(wire[1]).add(wire[0]);
-            idx ++;
         }    
-        return answer;    
+        return (answer == Integer.MAX_VALUE) ? 0 : answer;    
     }
     
-       public int bfs(int n, int start){
+      public int bfs(int n, int start){
         boolean[] visited= new boolean[n+1];
         int cnt=1;
 
@@ -51,6 +45,6 @@ class Solution {
                 }
             }
         }
-        return (int)Math.abs(n-2 * cnt); //cnt-(n-cnt);
+        return (int)Math.abs(n - 2 * cnt); 
    }
 }
