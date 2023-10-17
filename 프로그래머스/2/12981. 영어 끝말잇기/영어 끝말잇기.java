@@ -19,7 +19,6 @@ class Solution {
             if(number > 0){
                 if (!stBuilder.toString().substring(stBuilder.length() - 1).equals(words[number].substring(0, 1))) {
                     // stBuilder의 마지막 글자와 words[number]의 첫 글자가 다를 때 수행할 코드
-                    System.out.println("dd?"+ number);
                     answer[0] = (number % n) + 1;
                     answer[1] = (number / n) + 1;
                     break;
