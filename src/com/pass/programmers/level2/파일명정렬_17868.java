@@ -1,10 +1,17 @@
-// 09:28 시작
-// 11:25 end
+package com.pass.programmers.level2;
+
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.*;
-class Solution {
-    public String[] solution(String[] files) {
+
+// 09:28 시작
+// 11:25 end
+public class 파일명정렬_17868 {
+    public static void main(String[] args) {
+        String[] files = {"img12.txt","img13.txt"};
+        solution(files);
+    }
+    public static String[] solution(String[] files) {
         // compile(String regax) : 주어진 정규식으로부터 패턴을 만든다.
         // [a-zA-Z\\s.-] : 영소대문자와 공백 .-을 포함한 문자열을 검사한 정규식 생성
         // [0-9]{1,5} : 숫자로 이루어진 5자리 정규식 생성
