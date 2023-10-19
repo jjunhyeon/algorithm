@@ -8,29 +8,30 @@ class Solution {
     }
     
     public static String stackSolution(String number, int k) {
-        Stack<Character> stack = new Stack<>();
-        int len = number.length();
-        for (int i = 0; i < len; i++) {
-            char currentDigit = number.charAt(i);
-            while (!stack.isEmpty() && stack.peek() < currentDigit && k > 0) {
-                stack.pop();
-                k--;
+                StringBuilder result = new StringBuilder();
+
+        Stack<Integer> answer = new Stack<>();
+
+        // 스택을 통해 가장 머리에 있는 값을 다음 number와 비교하면서 만약 다음 number가 크다면 해당 값을 pop한다. 그렇지 않을 경우일때까지 뺀다.
+        for(int i=0; i<number.length(); i++){
+            int targetNumber = Character.getNumericValue(number.charAt(i));
+            while(!answer.isEmpty() && answer.peek() < targetNumber && k > 0 ){
+                answer.pop();
+                k -- ;
             }
-            stack.push(currentDigit);
+            answer.push(targetNumber);
         }
+        
+        while(k > 0){
+            answer.pop();
+            k --;
+        }
+        
+        while (!answer.isEmpty()) {
+            result.insert(0,answer.pop());
+        }
+        
 
-        // 남은 자릿수 중 뒤에서부터 k개 제거
-        while (k > 0) {
-            stack.pop();
-            k--;
-        }
-
-        // 스택에 남은 숫자를 문자열로 변환
-        StringBuilder answer = new StringBuilder();
-        while (!stack.isEmpty()) {
-            // 스택은 뒤에서부터, builder에는 0번째부터 추가하기 위함
-            answer.insert(0, stack.pop());
-        }
-        return answer.toString();
+        return result.toString();
     }
 }
