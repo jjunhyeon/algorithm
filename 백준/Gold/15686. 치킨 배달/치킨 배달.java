@@ -64,9 +64,11 @@ public class Main {
         }
 
         for (int i = cur; i < chickenList.size(); i++) {
+            if(!visited[i]){
                 visited[i] = true;
                 solution(i+1 ,depth + 1, visited);
                 visited[i] = false;
+            }
         }
     }
 
