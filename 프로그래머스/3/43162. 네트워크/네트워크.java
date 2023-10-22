@@ -40,7 +40,6 @@ class Solution {
         
         Queue<Integer> networkQueue = new LinkedList<>();
         networkQueue.offer(startNetwork);
-        System.out.println("networkList :: " + networkList);
         visited[startNetwork] = true;
         while(!networkQueue.isEmpty()){
             int nowNetwork = networkQueue.poll();
