@@ -24,20 +24,16 @@ class Solution {
         boolean[] visited = new boolean[n+1];
         boolean isFinished = false;
         for(int i=1; i<=n; i++){
-            if(!isFinished){
-                if(visited[i]) continue;
+            if(!visited[i]) {
                 answer ++;
-                isFinished = getNetworkCount(i,visited);
-            }  else{
-                break;
+                getNetworkCount(i,visited);
             }    
         }       
         return answer;
     }
     
     
-    public static boolean getNetworkCount(int startNetwork, boolean[] visited){
-        
+    public static void getNetworkCount(int startNetwork, boolean[] visited){
         Queue<Integer> networkQueue = new LinkedList<>();
         networkQueue.offer(startNetwork);
         visited[startNetwork] = true;
@@ -51,11 +47,5 @@ class Solution {
                 }
             }
         }
-        
-        for(int i=1; i<visited.length; i++){
-            if(!visited[i])  return false;
-        }
-        
-        return true;
     }
 }
