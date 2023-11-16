@@ -1,6 +1,5 @@
 package com.pass.algostudy.sorting;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -50,7 +49,7 @@ public class LRU_20230410 {
                     result[0] = array[j];
                 }
             }
-            for(int z=0; z< result.length; z++){
+            for (int z = 0; z < result.length; z++) {
                 answer += result[z] + " ";
             }
 
