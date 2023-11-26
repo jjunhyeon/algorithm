@@ -1,4 +1,6 @@
-class Solution {
+package com.pass.programmers.level2;
+
+class 쿼드압축_68936 {
     public int[] answer = new int[2];
     public int[] solution(int[][] arr) {       
         int size = arr.length;

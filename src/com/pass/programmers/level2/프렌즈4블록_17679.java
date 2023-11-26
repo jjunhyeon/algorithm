@@ -1,5 +1,7 @@
+package com.pass.programmers.level2;
+
 import java.util.*;
-class Solution {
+class 프렌즈4블록_17679 {
     
     public static int[] xArray = {0,1,1};
     public static int[] yArray = {1,0,1};
