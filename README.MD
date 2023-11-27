@@ -10,7 +10,7 @@
 
 주로 `점근적 분석` 을 통해 실행시간을 단순하게 표현하며 이 때 점근적 표기법으로 표현한다.
 
-실행시간, 점근전 분석에 대한 개념을 이해하기 위한 예제 코드
+개념 예제 코드
  ``` java
 public int multitply(int[] inputs, int multipler){
     int[] nums = new int[inputs.length];
