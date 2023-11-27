@@ -53,6 +53,7 @@ public int multitply(int[] inputs, int multipler){
 
 
 (그림 출처)(https://velog.io/@mangozoo20/%EA%B8%B0%EB%B3%B8-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B4%EB%A1%A0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
+
 ---
 
 ## 예제 코드
