@@ -139,12 +139,16 @@ private static int binarySearch(int[] array, int target){
 ```
 log N의 시간복잡도를 가지는 대표 이진탐색 코드이다. 일반 반복문보다 확실히 성능이 우수한것을 확인할 수 있다.
 
+---
+
 ## 활용 알고리즘 플랫폼 사이트 
 1. [프로그래머스](https://programmers.co.kr/)
 2. [해커랭크](https://www.hackerrank.com/)
 3. [인프런](https://www.inflearn.com/)
 4. [백준](https://www.acmicpc.net/)
 5. [리트코드](https://leetcode.com/)
+
+--- 
 
 ## 참고한 내용
 - [쉬운코딩 - 시간복잡도](https://www.youtube.com/watch?v=tTFoClBZutw)
