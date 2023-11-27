@@ -1,5 +1,8 @@
 import java.util.*;
 
+
+// 석유관 문제를 효율성 개선해서 통과 시킨 코드인데
+// 이 방식이 왜 기존 코드보다 효율성이 개선된 코드인지 아직 잘 이해가 안감
 class 기출2번 {
     public int[][] map;
     public int[][] oilInfo;
