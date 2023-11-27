@@ -50,10 +50,6 @@ public int multitply(int[] inputs, int multipler){
 
 ![시간복잡도](image/시간복잡도.png)
 
-
-
-(그림 출처)(https://velog.io/@mangozoo20/%EA%B8%B0%EB%B3%B8-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B4%EB%A1%A0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
-
 ---
 
 ## 예제 코드
@@ -153,4 +149,4 @@ log N의 시간복잡도를 가지는 대표 이진탐색 코드이다. 일반 �
 ## 참고한 내용
 - [쉬운코딩 - 시간복잡도](https://www.youtube.com/watch?v=tTFoClBZutw)
 
-- [알고리즘 velog](https://velog.io/@mangozoo20/%EA%B8%B0%EB%B3%B8-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B4%EB%A1%A0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
+- [시간복잡도 그림 출처 및 예제 코드 참고 velog](https://velog.io/@mangozoo20/%EA%B8%B0%EB%B3%B8-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%9D%B4%EB%A1%A0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
