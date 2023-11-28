@@ -11,7 +11,7 @@
 
 주로 <U>점근적 분석</U> 을 통해 실행시간을 단순하게 표현하며 이 때 <U>점근적 표기법</U>으로 표현한다.
 
-용어 이해를 돕기 위한 예제 코드
+'실행시간', `점근전 분석`, `점근적 표기법` 용어 이해를 위한 예제 코드
  ``` java
 public int multitply(int[] inputs, int multipler){
     int[] nums = new int[inputs.length];
