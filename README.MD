@@ -25,6 +25,8 @@ public int multitply(int[] inputs, int multipler){
 
 이 함수의 **실행시간**이 어느 정도인지를 어떻게 표현할 것인가?
 
+<br>
+
 ✔️  *실행시간*
 
 함수/ 알고리즘 수행에 필요한 스텝 수를 의미한다.
