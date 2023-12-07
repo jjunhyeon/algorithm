@@ -2,7 +2,7 @@ import java.util.*;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-class Solution {
+class 호텔대실_155651 {
     
     public class Room implements Comparable<Room> {
         LocalTime startTime;
