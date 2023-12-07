@@ -1,3 +1,5 @@
+package com.pass.programmers.level2;
+
 import java.util.*;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
