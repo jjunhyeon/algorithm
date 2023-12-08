@@ -36,7 +36,7 @@ public int multitply(int[] inputs, int multipler){
 (N = size of inputs)
 
 위 코드의 실행시간을 표현하면 `a*N + b` 이다.  
-(계산 과정에 대한 상세 내용이 궁금하면 아래 링크 <U>쉬운코딩</U>님 영상를 보고오자)
+(계산 과정에 대한 상세 내용이 궁금하면 아래 링크 <U>쉬운코딩</U>님 영상 참고)
 
 <br>
 
