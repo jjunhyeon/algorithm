@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +19,6 @@ public class Main {
                 resultBuilder.append(nowChar);
             } else if (nowChar == '(') {
                 resultStack.push('(');
-                // 닫는 괄호일 경우: 여는 괄호를 만나기 전까지 남은 연산자 문자열에 붙이기
             } else if(nowChar == ')'){
                 while(!resultStack.isEmpty()) {
                     if(resultStack.peek() == '(') {
