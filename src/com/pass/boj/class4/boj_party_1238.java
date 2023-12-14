@@ -45,16 +45,17 @@ public class boj_party_1238 {
 		int[] backDistnace = solution(X).clone();
 
 		for (int i = 1; i <= N; i++) {
-			if (i == X) continue;
+			if (i == X)
+				continue;
 			int[] goDistance = solution(i);
 			answer = Math.max(answer, goDistance[X] + backDistnace[i]);
 		}
-		
-        try {
-            System.out.println(answer);
-        } finally {
-            bf.close();
-        }
+
+		try {
+			System.out.println(answer);
+		} finally {
+			bf.close();
+		}
 
 	}
 
