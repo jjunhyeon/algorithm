@@ -50,7 +50,11 @@ public class boj_party_1238 {
 			answer = Math.max(answer, goDistance[X] + backDistnace[i]);
 		}
 		
-		System.out.println(answer);
+        try {
+            System.out.println(answer);
+        } finally {
+            bf.close();
+        }
 
 	}
 
