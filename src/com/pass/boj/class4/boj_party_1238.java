@@ -42,14 +42,12 @@ public class boj_party_1238 {
 		}
 
 		// 그냥 가져오면 아래에서 값이 바뀌어버림
-		int[] backDistnaceInfo = solution(X).clone();
+		int[] backDistnace = solution(X).clone();
 
 		for (int i = 1; i <= N; i++) {
 			if (i == X) continue;
 			int[] goDistance = solution(i);
-
-			int num = backDistnaceInfo[i];
-			answer = Math.max(answer, goDistance[X] + backDistnaceInfo[i]);
+			answer = Math.max(answer, goDistance[X] + backDistnace[i]);
 		}
 		
 		System.out.println(answer);
