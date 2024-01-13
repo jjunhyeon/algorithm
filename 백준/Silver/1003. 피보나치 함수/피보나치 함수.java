@@ -1,52 +1,42 @@
 
-import java.util.Scanner;
+import java.io.*;
 
-/*
- * 피보나치 함수에서
- * 0과 1이 리턴되는 개수를 리턴해라.
- * */
+// 피보나치
 public class Main {
-    public static int[] fiboArr = new int[41];
-    static StringBuilder sb;
-    public static class TEST {
-        public static void soltuion(int[] arr) {
 
-            for (int x : arr) {
-                sb = new StringBuilder();
-                fibo(x);
-                System.out.println(sb);
-            }
-        }
 
-        public static void fibo(int n) {
-            fiboArr[1] = 1;
-            if (n == 0) {
-                sb.append("1 0");
-            } else if (n == 1) {
-                sb.append("0 1");
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        // TESTCASE COUNT
+        int T = Integer.parseInt(bf.readLine());
+
+        int[] fibo = new int[41];
+        fibo[1] = 1;
+        fibo[2] = 1;
+        fibo[3] = 2;
+        getFiboNum(40, fibo);
+        while (T-- > 0) {
+            int N = Integer.parseInt(bf.readLine());
+            StringBuilder answer = new StringBuilder();
+            if (N == 0) {
+                answer.append(1 + " " + 0);
             } else {
-                // fiboarr이 호출되었을때 f0과 f1이 의 합을 리턴하게 되면 된다.
-                for (int i = 2; i <= n; i++) {
-                    fiboArr[i] = fiboArr[i - 2] + fiboArr[i - 1];
-                }
-                for (int i = 0; i < n; i++) {
-                    if(i == n-1) {
-                        sb.append(fiboArr[n - 1] + " " + fiboArr[n]);
-                    }
-                }
+                answer.append(fibo[N - 1] + " " + fibo[N]);
             }
+            bw.write(answer.toString());
+            bw.newLine();
         }
+        bf.close();
+        bw.close();
     }
 
-
-    public static void main(String[] args) {
-        TEST T = new TEST();
-        Scanner kb = new Scanner(System.in);
-        int k = kb.nextInt();
-        int[] arr = new int[k];
-        for (int i = 0; i < k; i++) {
-            arr[i] = kb.nextInt();
+    // 피보나치 수 구하기
+    private static int getFiboNum(int n, int[] fibo) {
+        if (fibo[n] != 0) {
+            return fibo[n];
         }
-        T.soltuion(arr);
+        return fibo[n] = getFiboNum(n - 1, fibo) + getFiboNum(n - 2, fibo);
     }
 }
