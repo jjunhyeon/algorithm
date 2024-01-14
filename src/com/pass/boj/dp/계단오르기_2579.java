@@ -29,6 +29,6 @@ public class 계단오르기_2579 {
                 dp[i] = Math.max(stair[i] + dp[i - 2], stair[i] + dp[i - 3] + stair[i - 1]);
             }
         }
-        System.out.println(N == 2 ? Math.max(stair[2], stair[1] + stair[2]) : dp[N]);
+        System.out.println(N == 2 ? stair[1] + stair[2] : dp[N]);
     }
 }
