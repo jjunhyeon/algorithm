@@ -11,28 +11,29 @@ public class 가장긴증가하는수열_11053 {
         int N = Integer.parseInt(bf.readLine());
         int[] arr = new int[N];
 
-        // 현재까지의 최대 수열의 개수를 저장할 dp 배열 생성
+        // 현재까지의 증가하는 수열의 개수를 저장할 배열
         int[] dp = new int[N];
-
         StringTokenizer st = new StringTokenizer(bf.readLine());
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        // 입력끝
-        bf.close();
-
-        int max = 1;
-        for(int i=0; i<N; i++) {
+        // dp 배열의 최대값을 저장하기 위한 변수
+        int max = 0;
+        for (int i = 0; i < N; i++) {
+            // 시작 배열의 기본값 설정
             dp[i] = 1;
-            for(int j=0; j<i; j++) {
+            for (int j = 0; j < i; j++) {
+                // 현재 기준의 값이 현재 값보다 크다면
                 if (arr[i] > arr[j]) {
-                    dp[i] = Math.max(dp[i], dp[j]+1);
-                    max = Math.max(max,  dp[i]);
+                    // 이전에 저장된 값에서 값을 하나씩 증가시킴(지금까지 증가하는 수열의 개수)
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                    max = Math.max(dp[i], max);
                 }
             }
         }
         System.out.println(max);
+        bf.close();
     }
 
 }
