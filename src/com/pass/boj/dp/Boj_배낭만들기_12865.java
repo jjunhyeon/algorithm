@@ -1,54 +1,49 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.OutputStreamWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // 백준 - 배낭 만들기
 public class Boj_배낭만들기_12865 {
-    public static void main(String[] args) throws NumberFormatException, IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		StringTokenizer st;
+		st = new StringTokenizer(bf.readLine());
+		
+		// Test case와 무게 변수 값
+		int T = Integer.parseInt(st.nextToken());
+		int W = Integer.parseInt(st.nextToken());
 
-        StringTokenizer st;
-        st = new StringTokenizer(bf.readLine());
+		// 입력 받자
+		int[][] inputValue = new int[T+1][2];
+		for(int i=1; i<=T; i++) {
+			st = new StringTokenizer(bf.readLine());
+			// 1변째 컬럼엔 무게 정보를 , 2번째 컬럼엔 가치 정보를 담는다.
+			inputValue[i][0] = Integer.parseInt(st.nextToken());
+			inputValue[i][1] = Integer.parseInt(st.nextToken());
+		}
+		
+		// 무게별, 최대 가중치 정보를 저장한다.
+		int[][] dp = new int[T+1][W+1];
+		
+		// 입력값
+		for(int i=1; i<=T; i++) {
+			for(int j=1; j<=W; j++) {
+				// 담을 수 있는 최대 무게보다 현재 담으려는게 작다면
+				if(j >= inputValue[i][0]) {
+					// 이전 최대 무게 vs 현재 넣으려는 물건의 가치 + 여분의 사이즈의 공간에 해당하는 최대 가치 
+					dp[i][j] = Math.max(dp[i-1][j], inputValue[i][1] + dp[i-1][j - inputValue[i][0]]);
+				} else {
+					dp[i][j] = dp[i-1][j];
+				}
+			}
+		}
 
-        // 물품의 수
-        int T = Integer.parseInt(st.nextToken());
-        int W = Integer.parseInt(st.nextToken());
-
-        // 무게별, 최대 가중치 정보를 저장한다.
-        int[] dp = new int[W + 1];
-
-        List<int[]> myList = new ArrayList<>();
-        for (int i = 0; i < T; i++) {
-            st = new StringTokenizer(bf.readLine());
-            int weight = Integer.parseInt(st.nextToken());
-            int value = Integer.parseInt(st.nextToken());
-            myList.add(new int[]{weight,value});
-        }
-
-        // 무게별, 최대 가중치 값으로 저장한다.
-        // weight 보다 작은 값에 대해 dp의 값을 모두 업데이트한다.
-        // 4,6,4,3,5 값에 대한 조합을 적용해야한다. 그치?
-        // dfs ? O(log n)
-        for(int i=0; i<T; i++){
-            // 무게 초과
-            int curWeight = myList.get(i)[0];
-            int curValue = myList.get(i)[1];
-            if(curWeight > W) continue;
-            dp[curWeight] = Math.max(dp[curWeight], curValue);
-        }
-
-        // TODO
-        // 사랑니 이슈로 진행이 어렵다.. 다시풀어보자.
-
-        int answer = 0;
-        for(int i=1; i<=W; i++){
-            answer = Math.max(answer, dp[i]);
-        }
-
-        System.out.println(answer);
-        bf.close();
-    }
+		System.out.println(dp[T][W]);
+	}
 }
