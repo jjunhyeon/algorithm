@@ -31,6 +31,7 @@ public class 가운데를말해요_1655 {
             for(int j=0; j<temp.size(); j++){
                 pq.add(temp.get(j));
             }
+            
             System.out.println(value);
             bf.close();
         }
