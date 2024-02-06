@@ -2,7 +2,7 @@
 # 개인 알고리즘 스터디 Repository
 알고리즘을 공부하며 풀었던 문제들을 기록하기 위한 공간입니다.
 
-아래 글은 알고리즘 이론 정리 내용입니다.
+아래 글은 알고리즘의 시간복잡도 개념을 이해하기 위한 내용입니다.
 
 </br>
 
@@ -15,7 +15,8 @@
 
 </br>
 
-***실행시간***, ***점근전 분석***, ***점근적 표기법*** 용어 이해를 위한 예제 코드
+<center> **시간복잡도** 개념 이해를 위한 예제 코드 </center>
+
  ``` java
 public int multitply(int[] inputs, int multipler){
     int[] nums = new int[inputs.length];
