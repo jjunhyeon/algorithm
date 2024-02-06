@@ -15,7 +15,7 @@
 
 </br>
 
-<center> **시간복잡도** 개념 이해를 위한 예제 코드 </center>
+ **시간복잡도** 개념 이해를 위한 예제 코드
 
  ``` java
 public int multitply(int[] inputs, int multipler){
