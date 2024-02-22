@@ -38,12 +38,7 @@ public class 모의고사 {
          * */
         List<Integer> answerList = new ArrayList<>();
 
-        int base = score[0];
-        for(int i=1; i<3; i++){
-            if(base < score[i]){
-                base = score[i];
-            }
-        }
+        int base = Math.max(score[0],Math.max(score[1],score[2]));
 
         if(base == score[2]){
             answerList.add(3);
@@ -58,9 +53,6 @@ public class 모의고사 {
         }
 
         Collections.sort(answerList);
-        // 가장 큰 value값의 키를 리턴해야하는 문제임
-        int result[] = new int[answerList.size()];
-        for(int i=0; i<answerList.size(); i++) result[i] = answerList.get(i);
-        return result[0] == 0 ? new int[]{1,2,3} : result;
+        return answerList.stream().mapToInt(i->i.intValue()).toArray();
     }
 }
