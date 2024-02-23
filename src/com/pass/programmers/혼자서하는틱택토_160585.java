@@ -95,7 +95,7 @@ public class 혼자서하는틱택토_160585 {
                         // 같은 값 범위로 처리
                         if (current[2] == -100 || current[2] == k) {
                             myQ.offer(new int[]{movedX, movedY, k});
-                            targetMap[movedX][movedY] = (map[currentX][currentY] == 0) ? targetMap[currentX][currentY] + 1 : Math.min(targetMap[movedX][movedY],targetMap[currentX][currentY] - 1);
+                            targetMap[movedX][movedY] = (map[currentX][currentY] == 0) ?  Math.max(targetMap[currentX][currentY] + 1,targetMap[movedX][movedY]) : Math.min(targetMap[movedX][movedY],targetMap[currentX][currentY] - 1);
                         }
                     }
                 }
