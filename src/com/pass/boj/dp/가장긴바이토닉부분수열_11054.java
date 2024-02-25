@@ -40,7 +40,7 @@ public class 가장긴바이토닉부분수열_11054 {
             array[i] = Integer.parseInt(st.nextToken());
         }
 
-        // dp 배열에 최대, 최소 값 세팅
+        // 왼쪽 최대 증가 배열 값 세팅
         for (int i = 0; i < N; i++) {
             leftStartDp[i] = 1;
             for (int j = 0; j < i; j++) {
@@ -50,6 +50,7 @@ public class 가장긴바이토닉부분수열_11054 {
             }
         }
 
+        // 오른쪽 최대 증가 배열 값 세팅
         for (int i = N - 1; i >= 0; i--) {
             rightStartDp[i] = 1;
             for (int j = N - 1; j > i; j--) {
