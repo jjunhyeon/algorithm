@@ -14,7 +14,7 @@ public class 혼자서하는틱택토_160585 {
     static int xCount = 0;
 
     public static void main(String[] args) {
-        String[] board = {"XOX", "OXO", "XOX"};
+        String[] board = {"OXO", ".OX", "OXX"};
         solution(board);
     }
 
@@ -57,11 +57,11 @@ public class 혼자서하는틱택토_160585 {
         // 0의 개수 < X의 개수
         if (oCount  < xCount  ) {
             return 0;
-        } else if (oCount > xCount + 1) { //0의 개수 > X의 개수 +1
+        } else if (oCount >= xCount + 1) { //0의 개수 > X의 개수 +1
             return 0;
-        } else if (min == -3 && oCount > xCount) {
+        } else if (min == -3 && oCount != xCount) {
             return 0;
-        } else if (max == 3 && xCount >= oCount || max ==3 && oCount > xCount) {
+        } else if (max == 3 && (oCount != xCount +1)) {
             return 0;
         } else if (max == 3 && min == -3) {
             return 0;
