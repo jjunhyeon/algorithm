@@ -3,8 +3,7 @@ package com.pass.boj.study;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class 가운데를말해요_1655 {
@@ -14,26 +13,46 @@ public class 가운데를말해요_1655 {
         int[] arr = new int[N];
 
         // 1.set inputValue
-        for(int i=0; i<N; i++) arr[i] = Integer.parseInt(bf.readLine());
+        for (int i = 0; i < N; i++) arr[i] = Integer.parseInt(bf.readLine());
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-        for(int i=0; i<N ; i++) {
-            pq.offer(arr[i]);
-            int size = (pq.size() % 2 == 0) ? pq.size() - 1 : pq.size();
-            int value = pq.peek();
-            List<Integer> temp = new ArrayList<>();
-            for(int k=0; k<size; k++){
-                if(k == size/2){
-                    value = pq.peek();
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < N; i++) {
+            // 1. 초기 조건
+            if (maxHeap.isEmpty()) {
+                maxHeap.offer(arr[i]);
+            }
+            else if(minHeap.isEmpty()){
+                if(maxHeap.peek() > arr[i]){
+                    minHeap.offer(maxHeap.poll());
+                    maxHeap.offer(arr[i]);
+                } else{
+                    minHeap.offer(arr[i]);
                 }
-                temp.add(pq.poll());
+            } else if(minHeap.size() > maxHeap.size()){
+                if(minHeap.peek() > arr[i]) maxHeap.offer(arr[i]);
+                else {
+                    maxHeap.offer(minHeap.poll());
+                    minHeap.offer(arr[i]);
+                }
+            } else if(maxHeap.size() > minHeap.size()){
+                if(maxHeap.peek() >= arr[i]) {
+                    minHeap.offer(maxHeap.poll());
+                    maxHeap.offer(arr[i]);
+                } else{
+                    minHeap.offer(arr[i]);
+                }
+            } else{
+                if(minHeap.peek() > arr[i]) maxHeap.offer(arr[i]);
+                else {
+                    maxHeap.offer(minHeap.poll());
+                    minHeap.offer(arr[i]);
+                }
             }
-            for(int j=0; j<temp.size(); j++){
-                pq.add(temp.get(j));
-            }
-            
-            System.out.println(value);
-            bf.close();
+            sb.append(maxHeap.peek()).append("\n");
         }
+        System.out.println(sb);
     }
+
 }
