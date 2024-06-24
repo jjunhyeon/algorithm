@@ -8,8 +8,9 @@ import java.io.OutputStreamWriter;
 
 public class 오목_2615 {
 	// 상하좌우 + 대각4개 처리를 위한 변수
-	static int[] xArray = { 1, 0, 1, -1 };
-	static int[] yArray = { 0, 1, 1, 1 };
+	// 오른쪽 상단, 오른쪽 ,밑 , 왼쪽 하단
+	static int[] xArray = { -1, 1, 0, 1, 1 };
+	static int[] yArray = { 1, 0, 1, 1, -1 };
 	// 오목판 19 * 19
 	static int[][] MAP = new int[19][19];
 
@@ -68,7 +69,7 @@ public class 오목_2615 {
 	// 시작점 i,j 기준으로 거리 정보를 찾는다.
 	private static int searchByBfs(int row, int col, int startPoint) {
 		int maxCount = 0;
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 5; i++) {
 			int count = 1;
 
 			// 현재 방향 검사
@@ -81,6 +82,7 @@ public class 오목_2615 {
 					break;
 				}
 				count++;
+				
 			}
 
 			nextX = row;
@@ -94,10 +96,11 @@ public class 오목_2615 {
 				}
 				count++;
 			}
-
-			maxCount = Math.max(maxCount, count);
+			
+			if(maxCount != 5) {
+				maxCount = Math.max(maxCount, count);
+			}
 		}
-
 		return maxCount;
 	}
 }
