@@ -1,48 +1,58 @@
-import java.util.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+// 바이러스 - dfs, bfs
 public class Main {
-    static boolean visited[];
-    static int result =0;
-    static ArrayList<ArrayList<Integer>> nodeInfo = new ArrayList<ArrayList<Integer>>();
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int comCount = sc.nextInt();
-        int arrCount = sc.nextInt();
-        visited = new boolean[comCount+1];
+	static boolean[] visited;
+	static ArrayList<ArrayList<Integer>> MAP = new ArrayList<>();
 
-        for(int i=0; i<=comCount; i++){
-            nodeInfo.add(new ArrayList<Integer>());
-        }
+	public static void main(String[] args) throws Exception, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        for(int i=0; i<arrCount; i++){
-            int a = sc.nextInt();
-            int b = sc.nextInt();
-            nodeInfo.get(a).add(b);
-            nodeInfo.get(b).add(a);
-        }
+		int COMPUTER_COUNT = Integer.parseInt(br.readLine());
+		int CONNECTION_COUNT = Integer.parseInt(br.readLine());
 
-        System.out.println(BFS());
-    }
+		visited = new boolean[COMPUTER_COUNT + 1];
+		// 초기화
+		for (int i = 0; i <= COMPUTER_COUNT; i++) {
+			MAP.add(new ArrayList<>());
+		}
 
-    private static int BFS() {
-        // 시작은 1번 컴퓨터
-        Queue<Integer>  Q = new LinkedList<>();
-        Q.offer(1);
-        while(!Q.isEmpty()){
-            int target = Q.poll();
-            visited[target] = true;
-            if(nodeInfo.get(target).isEmpty()){
-                continue;
-            }
+		StringTokenizer st;
+		for (int i = 0; i < CONNECTION_COUNT; i++) {
+			st = new StringTokenizer(br.readLine());
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
+			MAP.get(a).add(b);
+			MAP.get(b).add(a);
+		}
+		System.out.println(searchByBFS());
 
-            for(Integer x : nodeInfo.get(target)){
-                if(!visited[x]){
-                    visited[x] = true;
-                    Q.offer(x);
-                    result ++;
-                }
-            }
-        }
-        return result;
-    }
+	}
+
+	private static int searchByBFS() {
+		int answer = 0;
+		Queue<Integer> myQ = new LinkedList<>();
+		// START -> 1
+		myQ.offer(1);
+		visited[1] = true;
+		while (!myQ.isEmpty()) {
+			int cur = myQ.poll();
+			for (Integer next : MAP.get(cur)) {
+				if (!visited[next]) {
+					visited[next] = true;
+					myQ.offer(next);
+					answer++;
+				}
+			}
+		}
+
+		return answer;
+	}
 }
