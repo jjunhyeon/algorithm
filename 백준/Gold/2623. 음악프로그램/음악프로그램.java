@@ -1,75 +1,77 @@
 
+// 줄세우기(2252) 문제와 유사한 위사정렬 문제
+// 위상정렬의 핵심은 비순환그래프, 간선정보가 없는 노드부터 정리, 큐를 사용한다.
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
-/**
- * packageName    : com.pass.boj.study
- * fileName       : 음악프로그램_2623
- * author         : junhyeon
- * date           : 2024-04-21
- * description    :
- * ===========================================================
- * DATE              AUTHOR             NOTE
- * -----------------------------------------------------------
- * 2024-04-21        junhyeon       최초 생성
- */
 public class Main {
-    static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
-    public static void main(String[] args) throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(bf.readLine());
-        int TEAM_COUNT = Integer.parseInt(st.nextToken());
-        int PD_COUNT = Integer.parseInt(st.nextToken());
-        int[] EDGE_COUNT =new int[TEAM_COUNT + 1];
+	static int[] SINGER;
+	static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
 
-        StringBuilder sb = new StringBuilder();
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		StringTokenizer st = new StringTokenizer(br.readLine());
 
-        for(int i=0; i<=TEAM_COUNT; i++){
-            graph.add(new ArrayList<>());
-        }
+		// 입력값 1 ) 첫번쨰 가수의 수, 가수들의 순서 정보 수
+		int SINGER_COUNT = Integer.parseInt(st.nextToken());
+		int INFO_ROW = Integer.parseInt(st.nextToken());
 
-        int TEMP = 0;
-        for(int i=0; i<PD_COUNT; i++){
-            st = new StringTokenizer(bf.readLine());
-            int COUNT = Integer.parseInt(st.nextToken());
+		SINGER = new int[SINGER_COUNT + 1];
+		// 그래프 정보 초기화
+		for (int i = 0; i <= SINGER_COUNT; i++) {
+			graph.add(new ArrayList<>());
+		}
 
-            for(int j=0; j<COUNT; j++){
-                int value = Integer.parseInt(st.nextToken());
-                if(j != 0) {
-                    graph.get(TEMP).add(value);
-                    EDGE_COUNT[value] ++;
-                }
-                TEMP =  value;
-            }
-        }
+		// 입력값 2) 순서 관계 정보
+		for (int i = 0; i < INFO_ROW; i++) {
+			st = new StringTokenizer(br.readLine());
+			int count = Integer.parseInt(st.nextToken());
+			int start = 0;
+			int target = 0;
+			for (int j = 0; j < count; j++) {
+				if (start == 0) {
+					start = Integer.parseInt(st.nextToken());
+				} else if (target == 0) {
+					target = Integer.parseInt(st.nextToken());
+				} else {
+					start = target;
+					target = Integer.parseInt(st.nextToken());
+				}
+				if (start != 0 && target != 0) {
+					graph.get(start).add(target);
+					SINGER[target]++;
+				}
+			}
+		}
 
-        Queue<Integer> Q = new LinkedList<>();
-        // 진입차수가 0인 값을 큐에 넣어야한다.
-        for(int i=1; i<=TEAM_COUNT; i++){
-            if(EDGE_COUNT[i] == 0){
-                Q.offer(i);
-            }
-        }
+		Queue<Integer> myQ = new LinkedList<>();
+		// 진입차수가 0인 값을 큐에 넣어야한다.
+		for (int i = 1; i <= SINGER_COUNT; i++) {
+			if (SINGER[i] == 0) {
+				myQ.offer(i);
+			}
+		}
 
-        while(!Q.isEmpty()){
-            // 현재 노드
-            int cur = Q.poll();
-            sb.append(cur).append("\n");
-
-            // 인접 노드 목록
-
-
-            for(Integer item : graph.get(cur)){
-                // 인접 노드 정보 차감
-                EDGE_COUNT[item] --;
-                if(EDGE_COUNT[item] == 0){
-                    Q.offer(item);
-                }
-            }
-        }
-        System.out.println(sb.length()/2 < TEAM_COUNT ? 0 : sb);
-        bf.close();
-    }
+		while (!myQ.isEmpty()) {
+			int cur = myQ.poll();
+			sb.append(String.valueOf(cur)).append("\n");
+			for (final int next : graph.get(cur)) {
+				// 값 감소
+				SINGER[next]--;
+				if (SINGER[next] == 0) {
+					myQ.offer(next);
+				}
+			}
+		}
+		System.out.println(sb.length() / 2 < SINGER_COUNT ? 0 : sb);
+		br.close();
+	}
 }
