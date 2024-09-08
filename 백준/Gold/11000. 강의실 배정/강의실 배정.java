@@ -1,10 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -30,12 +27,8 @@ public class Main {
 		answer.add(room.poll());
 		while (!room.isEmpty()) {
 			ClassRoom item = room.poll();
-			if(answer.peek().endTime > item.startTime) {
-				answer.add(item);
-			} else if (answer.peek().endTime <= item.startTime) {
-				answer.poll();
-				answer.offer(item);
-			}
+			if (answer.peek().endTime <= item.startTime) answer.poll();
+			answer.offer(item);
 		}
 		System.out.println(answer.size());
 
@@ -52,13 +45,7 @@ public class Main {
 
 		@Override
 		public int compareTo(ClassRoom o) {
-			// 종료시간이 더 작은 인스턴스를 더 높은 우선순위를 갖도록한다.
 			return this.startTime - o.startTime;
-		}
-
-		@Override
-		public String toString() {
-			return this.startTime + " " + this.endTime;
 		}
 	}
 }
