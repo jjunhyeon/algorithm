@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,11 +23,11 @@ public class Main {
 		}
 		br.close();
 		boolean[] visited = new boolean[N];
-		dfs(0, 0, visited, 1, 0);
+		dfs(0, visited, 1, 0);
 		System.out.println(result);
 	}
 
-	private static void dfs(int start, int depth, boolean[] visited, int curSin, int curDan) {
+	private static void dfs(int depth, boolean[] visited, int curSin, int curDan) {
 
 		if (depth > 0) {
 			result = Math.min(result, Math.abs(curSin - curDan));
@@ -41,7 +40,7 @@ public class Main {
 		for (int i = 0; i < N; i++) {
 			if (!visited[i]) {
 				visited[i] = true;
-				dfs(start, depth + 1, visited, curSin * sin[i], curDan + dan[i]);
+				dfs(depth + 1, visited, curSin * sin[i], curDan + dan[i]);
 				visited[i] = false;
 			}
 		}
