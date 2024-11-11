@@ -8,27 +8,18 @@ class Solution {
         int walX = wallet[0];
         int walY = wallet[1];
         
-        int bigOne = 0;
-        int smallOne = 0;
-        if(baseX >= baseY){
-            bigOne = baseX;
-            smallOne =baseY;
-        } else {
-            bigOne = baseY;
-            smallOne = baseX;
-        }
+        int bigOne = Math.max(baseX,baseY);
+        int smallOne = Math.min(baseX,baseY);
         
-        if((bigOne <= walX && smallOne <= walY) || (bigOne <= walY && smallOne <= walX)) return 0;
-        
-        while(true) {            
+        while(true) {   
+            if(bigOne <= walX && smallOne <= walY) break;
+            if(bigOne <= walY && smallOne <= walX) break;
             if(bigOne >= smallOne){
                 bigOne = bigOne / 2;
             } else {
                 smallOne = smallOne / 2;
             }
             answer +=1;
-            if(bigOne <= walX && smallOne <= walY) break;
-            if(bigOne <= walY && smallOne <= walX) break;
         }
         return answer;
     }
