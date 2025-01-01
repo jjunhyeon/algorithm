@@ -1,4 +1,4 @@
-package com.pass.algostudy.array;
+package array;
 
 import com.pass.algostudy.string.OnlyNumber_20230225;
 

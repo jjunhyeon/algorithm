@@ -1,4 +1,4 @@
-package com.pass.algostudy.bfs;
+package bfs;
 
 import java.util.LinkedList;
 import java.util.Queue;
