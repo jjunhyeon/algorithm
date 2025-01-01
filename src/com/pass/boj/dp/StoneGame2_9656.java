@@ -1,3 +1,5 @@
+package com.pass.boj.dp;
+
 import java.util.Scanner;
 
 public class StoneGame2_9656 {

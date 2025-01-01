@@ -1,3 +1,5 @@
+package com.pass.boj.dp;
+
 import java.util.Scanner;
 
 // 백준 - 설탕배달

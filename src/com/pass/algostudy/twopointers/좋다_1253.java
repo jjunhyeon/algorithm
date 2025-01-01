@@ -1,5 +1,5 @@
 // N 개의 수 중에서 어떤 수가 다른 수 두개의 합으로 나타낼 수 있다면 그 수를 "쫗다" 라고 한다. GOOD 
-package com;
+package com.pass.algostudy.twopointers;
 
 
 

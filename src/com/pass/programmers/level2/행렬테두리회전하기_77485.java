@@ -1,3 +1,5 @@
+package com.pass.programmers.level2;
+
 class 행렬테두리회전하기_77485 {
     public int[] solution(int rows, int columns, int[][] queries) {
         int[] answer = new int[queries.length];
