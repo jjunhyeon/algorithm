@@ -1,4 +1,4 @@
-package com.essential.basic.dfs;
+package com.pass.algostudy.dfs;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
