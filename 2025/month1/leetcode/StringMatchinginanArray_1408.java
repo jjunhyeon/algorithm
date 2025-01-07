@@ -20,6 +20,7 @@ Example 3:
 Input: words = ["blue","green","bu"]
 Output: []
 Explanation: No string of words is substring of another string.
+link : https://leetcode.com/problems/string-matching-in-an-array/description/?envType=daily-question&envId=2025-01-07
 Start date : 1/08
  */
 public class StringMatchinginanArray_1408 {
