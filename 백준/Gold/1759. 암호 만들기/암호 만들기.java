@@ -1,82 +1,94 @@
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Arrays;
+import java.util.List;
 import java.util.StringTokenizer;
 
 /**
- * packageName    : com.pass.boj.study
- * fileName       : 암호만들기_1759
- * author         : junhyeon
- * date           : 2024-05-12
- * description    :
- * ===========================================================
- * DATE              AUTHOR             NOTE
- * -----------------------------------------------------------
- * 2024-05-12        junhyeon       최초 생성
+ * 골드 5 백트레킹 기본 유형 문제 2/09 15: 30 ~
  */
 public class Main {
-    static int len, fullLen;
-    static String[] word;
-    public static void main(String[] args) throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(bf.readLine());
 
-        len = Integer.parseInt(st.nextToken());
-        fullLen = Integer.parseInt(st.nextToken());
-        word = new String[fullLen];
+	static int T, L;
+	static String[] password;
+	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        st = new StringTokenizer(bf.readLine());
-        for(int i=0; i<fullLen; i++){
-            word[i] = st.nextToken();
-        }
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		// T, 정답의 LEN
+		T = Integer.parseInt(st.nextToken());
+		// L, 주어지는 문자열의 수
+		L = Integer.parseInt(st.nextToken());
 
-        // 사전순 정렬
-        Arrays.sort(word);
-        boolean[] visited =new boolean[fullLen];
-        dfsByWord(0, 0, visited, new StringBuilder());
-    }
+		password = new String[L];
 
-    private static void dfsByWord(int start, int depth, boolean[] visited, StringBuilder cur) {
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < L; i++) {
+			password[i] = st.nextToken();
+		}
 
-        if(depth == len){
-            if(checkContainAEIOU(cur) && checkAtLeastTwoCharNotAEIOU(cur)){
-                System.out.println(cur);
-            }
-            return;
-        }
+		// 기본조건, 사전식 정렬
+		Arrays.sort(password);
 
-        for(int i=start; i<fullLen; i++){
-            if(!visited[i]){
-                cur.append(word[i]);
-                visited[i] = true;
-                dfsByWord(i+1, depth+1, visited, cur);
-                visited[i] = false;
-                cur.setLength(cur.length() - 1);
-            }
-        }
-    }
+		dfs(0, 0, new StringBuilder());
+		br.close();
+		bw.flush();
+		bw.close();
+	}
 
-    private static boolean checkContainAEIOU(StringBuilder st){
-        for(char ch : st.toString().toCharArray()){
-            if((ch == 'a' || ch == 'e' || ch =='i' || ch =='o' || ch == 'u')){
-                return true;
-            }
-        }
-        return false;
-    }
+	// @param : 깊이
+	// @param : 방문여부
+	private static void dfs(int depth, int start, StringBuilder sb) throws IOException {
+		// 깊이가 T
+		if (depth == T) {
+			// validate sb
+			// sb가 자음이 포함되어 있고 모음이 2개이상 있는지 체크
+			if (validate(sb) && isSorted(sb)) {
+				bw.append(sb).append("\n");
+			}
+			return;
+		}
 
-    private static boolean checkAtLeastTwoCharNotAEIOU(StringBuilder st){
-        int check = 0;
-        for(char ch : st.toString().toCharArray()){
-            if(!(ch == 'a' || ch == 'e' || ch =='i' || ch =='o' || ch == 'u')){
-                check ++;
-            }
-            if(check >= 2){
-                return true;
-            }
-        }
-        return false;
-    }
+		for (int i = start; i < L; i++) {
+			sb.append(password[i]);
+			dfs(depth + 1, i + 1, sb);
+			sb.deleteCharAt(sb.length() - 1);
+		}
+	}
+
+	private static boolean isSorted(StringBuilder sb) {
+		String original = sb.toString();
+		char[] temp = original.toCharArray();
+		char[] real = original.toCharArray();
+		Arrays.sort(real);
+		// 정렬한것과 정렬하지 않은것에 대해 일치하는지 체크 후 return
+		return Arrays.equals(temp, real);
+	}
+
+	private static boolean validate(StringBuilder sb) {
+		boolean isJaContain = false;
+		int moCount = 0;
+		List<Character> base = Arrays.asList('a', 'e', 'i', 'o', 'u');
+
+		int len = sb.length();
+		for (int i = 0; i < len; i++) {
+			if (isJaContain && moCount >= 2)
+				return true;
+
+			if (isJaContain == false && base.contains(sb.charAt(i))) {
+				isJaContain = true;
+				continue;
+			}
+			if (!base.contains(sb.charAt(i))) {
+				moCount++;
+			}
+		}
+
+		return (isJaContain && moCount >= 2) ? true : false;
+	}
 }
