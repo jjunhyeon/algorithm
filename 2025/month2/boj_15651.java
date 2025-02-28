@@ -1,13 +1,12 @@
 package month2;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 /*
@@ -23,7 +22,7 @@ import java.util.StringTokenizer;
 */
 public class boj_15651 {
 	static int N, M;
-	static List<String> isChecked = new ArrayList<>();
+	static Set<String> isChecked = new HashSet<>();
 	static int[] defaultArray;
 
 	public static void main(String[] args) throws IOException {
@@ -36,30 +35,32 @@ public class boj_15651 {
 		M = Integer.parseInt(st.nextToken());
 		defaultArray = new int[N + 1];
 		// 기본 배열의 값에 Array[i] = i; 세팅
-		for (int i = 1; i <= N; i++) defaultArray[i] = i;
-		getTargetByDfs(1, new StringBuilder());
+		for (int i = 1; i <= N; i++)
+			defaultArray[i] = i;
+		getTargetByDfs(new StringBuilder(), 0);
 	}
 
-	private static void getTargetByDfs(int start, StringBuilder curString) {
+	private static void getTargetByDfs(StringBuilder curString, int depth) {
 		// return ; 시점은
-		// curString이 target이 된 순간
-		if (curString.length() == M) {
+		if (depth == M) {
 			// duplicated check
 			// String.join은 배열값에 대해 왼쪽 파라미터 값을 기준으로 연결하여 출력하게 해준다.
-			String cur = String.join(" ", curString.toString().split(""));
+			// String cur = String.join(" ", curString.toString().split(""));
+			// -> 문자사이에 공백 넣기 로직 개선 필요 
+			// -> 시간초과발생
 			// 만약 기존에 출력된 값이 아니라면 출력
-			if(!isChecked.contains(cur)) {
-				System.out.println(cur);
-				isChecked.add(cur);
+			if (!isChecked.contains(curString.toString())) {
+				System.out.println(curString.toString());
+				isChecked.add(curString.toString());
 			}
 			return;
 		}
 
 		// FIXME 전체 탐색으로 전환 필요
-		for (int i = start; i <= N; i++) {
+		for (int i = 1; i <= N; i++) {
 			curString.append(defaultArray[i]);
-			getTargetByDfs(i, curString);
-			curString.deleteCharAt(curString.length()-1);
+			getTargetByDfs(curString, depth + 1);
+			curString.deleteCharAt(curString.length() - 1);
 		}
 	}
 }
