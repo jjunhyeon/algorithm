@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -37,7 +36,7 @@ public class Main {
 	private static void getTargetByDfs(StringBuilder curString, int depth) throws IOException {
 		// return ; 시점은
 		if (depth == M) {
-            for (int i = 0; i < curString.length(); i++) {
+            for (int i = 0; i < M; i++) {
                 if (i > 0) bw.append(" ");
                 bw.append(curString.charAt(i));
                 if(i == M - 1) bw.append("\n");
