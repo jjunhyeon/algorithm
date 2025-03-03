@@ -1,14 +1,21 @@
 
 ## 문제 리뷰
 
-백준 문제 보기
+[백준 문제 보기](https://www.acmicpc.net/problem/15651)
 
-나의 소스 확인
+<br>
+
+[나의 소스 확인](https://github.com/jjunhyeon/algorithm/blob/9c92c74628818a3feff7bbb643fadbe479eeef91/2025/month2/boj_15651.java)
+
+<br>
 
 ### 1. 개요
+
 `1부터 N까지의 자연수 중에서 M개를 고른 수열을 모두 출력` 하는 문제이다. <br>
 **중복 선택이 가능** 하며, **순서가 중요**한 문제다
 즉, 중복 순열을 생성하는 문제이다.
+
+<br>
 
 ### 1. 문제를 보고 든 생각
 
