@@ -34,11 +34,12 @@ M개를 골랐다는것은 String이 M개만큼 선택되어 수열이 생성되
 처음에는 그냥 BufferedWriter를 사용하지 않고 조건에 맞으면 bw.append가 아닌 System.out.println로 값을 출력했었다.
 시간초과 발생했고 실패했다.
 
+초기엔 `depth == M` 인 시점에 System.out.print로 모두 출력했었다.
 수열이 길어지게 되면 내장 시스템 함수를 굉장히 많이 사용하게 되고 이게 성능에 굉장히 악영향을 주었던거 같다.
 
+[아래는 개선한 코드]
 
-
-```
+``` java
 	private static void getTargetByDfs(StringBuilder curString, int depth) throws IOException {
 		// return ; 시점은
 		if (depth == M) {
