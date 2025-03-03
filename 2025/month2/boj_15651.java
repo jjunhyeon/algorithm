@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.StringTokenizer;
 
 /*
@@ -18,7 +16,6 @@ import java.util.StringTokenizer;
 */
 public class boj_15651 {
 	static int N, M;
-	static Set<String> isChecked = new HashSet<>();
 	static int[] defaultArray;
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
@@ -41,10 +38,11 @@ public class boj_15651 {
 	private static void getTargetByDfs(StringBuilder curString, int depth) throws IOException {
 		// return ; 시점은
 		if (depth == M) {
-			if (!isChecked.contains(curString.toString())) {
-				bw.append(String.join(" ", curString.toString().split(""))).append("\n");
-				isChecked.add(curString.toString());
-			}
+            for (int i = 0; i < M; i++) {
+                if (i > 0) bw.append(" ");
+                bw.append(curString.charAt(i));
+                if(i == M - 1) bw.append("\n");
+            }
 			return;
 		}
 
