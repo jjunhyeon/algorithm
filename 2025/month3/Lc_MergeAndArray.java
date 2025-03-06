@@ -13,6 +13,8 @@ public class Lc_MergeAndArray {
 		int num1 = 3;
 		int[] nums2 = {2,5,6};
 		int num2 = 3;
+		
+		// 예시에 대한 리턴 => {1,2,2,3,5,6}
 		solution(nums1, num1, nums2, num2);
 	}
 
@@ -20,6 +22,26 @@ public class Lc_MergeAndArray {
 	// @note : the final sorted array should not be returned by the function
 	// but instead be stored inside the array nums1.
 	private static void solution(int[] nums1, int num1, int[] nums2, int num2) {
-		
+		//num1은 nums1의 길이
+		//num2는 nums2의 길이
+		int T = nums1.length - 1;
+		int p1 = num1 - 1;
+		int p2 = num2 - 1;
+		while(T >= 0) {
+			if(p1 < 0) {
+				nums1[T] = nums2[p2];
+				p2--;
+			} else if(p2 < 0) {
+	            nums1[T] = nums1[p1];
+	            p1--;
+			} else if(nums1[p1] > nums2[p2]) {
+				nums1[T] = nums1[p1];
+				p1 --;
+			} else {
+				nums1[T] = nums2[p2];
+				p2 --;
+			}
+			T--;
+		}
 	}
 }
