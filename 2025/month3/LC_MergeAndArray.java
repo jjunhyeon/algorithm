@@ -6,7 +6,7 @@ package month3;
  * 2025-03-04 today (12: 30 ~ 12: 55)
  * 문제파악
 */
-public class Lc_MergeAndArray {
+public class LC_MergeAndArray {
 	public static void main(String[] args) {
 		// example data
 		int[] nums1 = {1,2,3,0,0,0};
