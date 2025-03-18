@@ -15,15 +15,14 @@ public class LC_RemoveDuplicatesFromSortedArray2 {
 		int len = nums.length;
 		int sum = 1;
 		for(int i=1; i<len; i++) {
-			if(nums[p1] == nums[i]) {
+ 			if(nums[p1] == nums[i]) {
 				sum ++;
 			} else {
 				sum = 1;
 			}
 			
 			if(sum <= 2) {
-				p1 ++;
-				nums[p1] = nums[i];
+				nums[++p1] = nums[i];
 			}
 		}
 		
