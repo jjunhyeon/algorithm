@@ -9,6 +9,7 @@ public class LC_TwoSum {
 	public static void main(String[] args) {
 		int[] nums = { 3, 3 };
 		int target = 6;
+		solution(nums,target);
 	}
 
 	private static int[] solution(int[] nums, int target) {
