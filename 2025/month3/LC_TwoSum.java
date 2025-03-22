@@ -1,7 +1,5 @@
 package month3;
 
-import java.util.Arrays;
-
 /*
  * twom sum
  * link : https://leetcode.com/problems/two-sum/description/
@@ -11,7 +9,6 @@ public class LC_TwoSum {
 	public static void main(String[] args) {
 		int[] nums = { 3, 3 };
 		int target = 6;
-		System.out.println("Arrys::: >>" + Arrays.toString(solution(nums, target)));
 	}
 
 	private static int[] solution(int[] nums, int target) {
