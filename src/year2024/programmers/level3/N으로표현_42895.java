@@ -35,7 +35,7 @@ public class N으로표현_42895 {
                 unionAdd(defaultSet.get(i),defaultSet.get(j),defaultSet.get(i-j));
             }
             // i 만큼 동일한 number 값
-            String target = Integer.toString(N).repeat(i);
+            String target = new String(new char[i]).replace("0", Integer.toString(N));
             defaultSet.get(i).add(Integer.valueOf(target));
             // 해쉬셋에 포함되어 있으면 끝
             if(defaultSet.get(i).contains(number)) return i;
