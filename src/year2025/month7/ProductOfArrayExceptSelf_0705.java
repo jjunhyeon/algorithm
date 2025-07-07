@@ -8,14 +8,14 @@ package year2025.month7;
 * 4: 50 ~ 5:00 
 * -> 하지만 O(N^2) 해결
 * -> 왼쪽곱 이후 오른쪽 곱 O(n) 루프 2번으로 해결
-* 해당 사고가 처음엔 잘 떠오르지 않았음, 결국 해결과정을 찾아봄
+* DP해결
 * 다시 풀어볼문제
 */
 public class ProductOfArrayExceptSelf_0705 {
 	public static void main(String[] args) {
 		int[] num1 = new int[] {1,2,3,4};
 		int[] num2 = new int[] {-1,-1,0,-3,-3};
-		// 이중포문 해결 O(N^2) -> 최악
+		// 이중포문 해결 O(N^2) -> TLE
 		//solution(num2);
 		// O(n) 해결하기
 		solution_new(num1);
