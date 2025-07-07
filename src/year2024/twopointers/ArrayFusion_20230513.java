@@ -1,4 +1,4 @@
-package src.year2024.twopointers;
+package year2024.twopointers;
 
 import java.util.ArrayList;
 import java.util.Arrays;

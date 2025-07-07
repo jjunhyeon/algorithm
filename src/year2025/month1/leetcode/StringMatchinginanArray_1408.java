@@ -1,4 +1,4 @@
-package src.year2025.month1.leetcode;
+package year2025.month1.leetcode;
 
 
 /**

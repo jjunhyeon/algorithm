@@ -1,4 +1,4 @@
-package src.year2024.programmers.level2;
+package year2024.programmers.level2;
 
 public class 파괴되지않는건물_92344 {
     public static void main(String[] args) {

@@ -1,14 +1,9 @@
-package src.year2024.class4_2;
+package year2024.class4_2;
 
-import jdk.swing.interop.SwingInterOpUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
 /*
  * 백준 - 최장 부분 순열

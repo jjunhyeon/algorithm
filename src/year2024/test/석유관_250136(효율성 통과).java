@@ -1,4 +1,4 @@
-package src.year2024.test;
+package year2024.test;
 import java.util.*;
 
 class 기출2번 {

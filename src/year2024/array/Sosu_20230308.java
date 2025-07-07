@@ -1,4 +1,4 @@
-package src.year2024.array;
+package year2024.array;
 
 import java.util.Scanner;
 /*

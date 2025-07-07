@@ -1,4 +1,4 @@
-package src.year2024.dfs;
+package year2024.dfs;
 
 /*
 * DFS(깊이 우선 탐색) 기초

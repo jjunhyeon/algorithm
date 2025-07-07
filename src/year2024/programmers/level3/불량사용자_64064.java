@@ -1,4 +1,4 @@
-package src.year2024.programmers.level3;
+package year2024.programmers.level3;
 
 import java.util.Arrays;
 import java.util.HashSet;

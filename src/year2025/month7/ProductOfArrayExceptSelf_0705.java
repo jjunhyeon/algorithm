@@ -1,4 +1,4 @@
-package src.year2025.month7;
+package year2025.month7;
 
 
 /*

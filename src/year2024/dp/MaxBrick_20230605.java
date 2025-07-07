@@ -1,4 +1,4 @@
-package src.year2024.dp;
+package year2024.dp;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package src.year2024.proxy;
+package year2024.proxy;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;

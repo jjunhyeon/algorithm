@@ -1,4 +1,4 @@
-package src.year2024.programmers.level2;
+package year2024.programmers.level2;
 
 /*
  * 스킬트리

@@ -1,4 +1,4 @@
-package src.year2024.class4;
+package year2024.class4;
 
 import java.util.ArrayList;
 import java.util.Scanner;

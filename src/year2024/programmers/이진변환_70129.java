@@ -1,4 +1,4 @@
-package src.year2024.programmers;
+package year2024.programmers;
 
 // 이진변환 
 public class 이진변환_70129 {

@@ -1,4 +1,4 @@
-package src.year2024.string;
+package year2024.string;
 
 import java.util.Locale;
 import java.util.Scanner;

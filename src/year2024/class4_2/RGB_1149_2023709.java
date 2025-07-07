@@ -1,4 +1,4 @@
-package src.year2024.class4_2;
+package year2024.class4_2;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package src.year2024.sorting;
+package year2024.sorting;
 
 import java.util.Scanner;
 

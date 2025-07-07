@@ -1,4 +1,4 @@
-package src.year2024.dfs;
+package year2024.dfs;
 
 public class SubSet_20230429 {
     static class Main{

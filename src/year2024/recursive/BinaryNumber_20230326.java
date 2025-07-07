@@ -1,4 +1,4 @@
-package src.year2024.recursive;
+package year2024.recursive;
 
 /*
 * 이진수 출력(재귀로)

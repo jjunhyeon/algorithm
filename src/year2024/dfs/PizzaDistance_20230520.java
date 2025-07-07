@@ -1,4 +1,4 @@
-package src.year2024.dfs;
+package year2024.dfs;
 
 import java.util.ArrayList;
 import java.util.Scanner;

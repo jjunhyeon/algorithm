@@ -1,4 +1,4 @@
-package src.year2025.month3;
+package year2025.month3;
 
 import java.util.ArrayList;
 import java.util.HashMap;

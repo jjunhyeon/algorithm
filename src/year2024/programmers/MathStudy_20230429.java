@@ -1,4 +1,4 @@
-package src.year2024.programmers;
+package year2024.programmers;
 
 // while문 활용해 n이 1이 아니라면 n/2-> 절반값 +1
 // n/2 보다 작은값에 대해서만 시작

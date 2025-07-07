@@ -1,4 +1,4 @@
-package src.year2024.greedy2;
+package year2024.greedy2;
 
 /*
 * 강의 n일 안에와서 강의를 해주면 n만큼의 돈을 줄때

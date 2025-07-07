@@ -1,4 +1,4 @@
-package src.year2024.leetcode;
+package year2024.leetcode;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package src.year2024.programmers;
+package year2024.programmers;
 
 public class 삼각달팽이_68645 {
 

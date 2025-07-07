@@ -1,4 +1,4 @@
-package src.year2024.dp2;
+package year2024.dp2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

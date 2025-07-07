@@ -1,4 +1,4 @@
-package src.year2024.stackorqueue;
+package year2024.stackorqueue;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

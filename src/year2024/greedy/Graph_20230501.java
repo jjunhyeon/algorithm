@@ -1,4 +1,4 @@
-package src.year2024.greedy;
+package year2024.greedy;
 
 import java.util.Scanner;
 

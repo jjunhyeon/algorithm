@@ -1,4 +1,4 @@
-package src.year2024.test;
+package year2024.test;
 
 /*
 * 문자열 순열 테스트

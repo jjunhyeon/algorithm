@@ -1,4 +1,4 @@
-package src.year2024.bfs;
+package year2024.bfs;
 
 import java.util.LinkedList;
 import java.util.Queue;

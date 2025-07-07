@@ -1,4 +1,4 @@
-package src.year2024.programmers.level2;
+package year2024.programmers.level2;
 import java.util.*;
 
 public class 큰수찾기_42476 {

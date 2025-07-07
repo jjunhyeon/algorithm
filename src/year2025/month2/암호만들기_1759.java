@@ -1,4 +1,4 @@
-package src.year2025.month2;
+package year2025.month2;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

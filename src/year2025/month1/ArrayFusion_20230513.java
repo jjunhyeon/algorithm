@@ -1,4 +1,4 @@
-package src.year2025.month1;
+package year2025.month1;
 
 import java.util.ArrayList;
 import java.util.Arrays;

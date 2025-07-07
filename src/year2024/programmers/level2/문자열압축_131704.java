@@ -1,4 +1,4 @@
-package src.year2024.programmers.level2;
+package year2024.programmers.level2;
 
 /*
 * 구현(?)

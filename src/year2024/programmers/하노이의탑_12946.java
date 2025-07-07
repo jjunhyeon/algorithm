@@ -1,4 +1,4 @@
-package src.year2024.programmers;
+package year2024.programmers;
 
 import java.util.ArrayList;
 import java.util.List;

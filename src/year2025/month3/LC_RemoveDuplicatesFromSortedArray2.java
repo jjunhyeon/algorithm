@@ -1,4 +1,4 @@
-package src.year2025.month3;
+package year2025.month3;
 
 // 12 : 30 ~ 13 :00
 // 03-13 leetCode

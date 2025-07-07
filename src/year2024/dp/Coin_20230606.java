@@ -1,4 +1,4 @@
-package src.year2024.dp;
+package year2024.dp;
 
 import java.util.Arrays;
 import java.util.Scanner;

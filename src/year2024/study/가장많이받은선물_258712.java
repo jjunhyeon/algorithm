@@ -1,4 +1,4 @@
-package src.year2024.study;
+package year2024.study;
 
 import java.util.HashMap;
 import java.util.Map;

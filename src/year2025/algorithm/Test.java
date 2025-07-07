@@ -1,4 +1,4 @@
-package src.year2025.algorithm;
+package year2025.algorithm;
 
 public class Test {
 	public static void main(String[] args) {

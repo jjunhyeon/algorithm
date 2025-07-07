@@ -1,4 +1,4 @@
-package src.year2024.tree;
+package year2024.tree;
 
 import java.io.BufferedReader;
 import java.io.IOException;

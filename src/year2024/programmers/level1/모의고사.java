@@ -1,4 +1,4 @@
-package src.year2024.programmers.level1;
+package year2024.programmers.level1;
 
 import java.util.*;
 

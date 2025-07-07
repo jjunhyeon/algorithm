@@ -1,4 +1,4 @@
-package src.year2024.recursive;
+package year2024.recursive;
 
 /*
 * 깊이 우선 탐색 : DFS

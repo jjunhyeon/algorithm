@@ -21,7 +21,7 @@
  * 2) 예외처리
  * : 만약 리스트가 비어있거 길이가 1일때에 대한 처리
 */
-package src.year2025.month7;
+package year2025.month7;
 
 
 
@@ -30,7 +30,6 @@ public class leetCode_BestTimeToBuyandSellStock_0703 {
 		//int[] prices1 = new int[] { 7, 1, 5, 3, 6, 4 };
 		int[] prices2 = new int[] {7,6,4,3,1};
 		int answer = solution(prices2);
-		System.out.println("answer ::" + answer );
 	}
 
 	private static int solution(int[] prices) {

@@ -1,4 +1,4 @@
-package src.year2024.programmers.level2;
+package year2024.programmers.level2;
 
 class 쿼드압축_68936 {
     public int[] answer = new int[2];

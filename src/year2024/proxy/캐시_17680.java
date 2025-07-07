@@ -1,4 +1,4 @@
-package src.year2024.proxy;
+package year2024.proxy;
 
 import java.util.Arrays;
 import java.util.Deque;
