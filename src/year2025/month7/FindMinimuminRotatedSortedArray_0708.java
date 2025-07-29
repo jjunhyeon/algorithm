@@ -1,11 +1,5 @@
 package year2025.month7;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-
 /**
 * Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:
 * [4,5,6,7,0,1,2] if it was rotated 4 times.
@@ -14,7 +8,7 @@ import java.util.Set;
 * Given the sorted rotated array nums of unique elements, return the minimum element of this array.
 * You must write an algorithm that runs in O(log n) time
  */
-public class FindMinimuminRotatedSortedArray_708 {
+public class FindMinimuminRotatedSortedArray_0708 {
 
 	public static void main(String[] args) {
 		int[] nums2 = new int[] {4,5,6,7,0,1,2};
