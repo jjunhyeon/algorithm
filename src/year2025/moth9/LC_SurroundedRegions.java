@@ -33,16 +33,33 @@ public class LC_SurroundedRegions {
 			copied[i] = board[i].clone();
 		}
 		
-		// 개선 ) 전체 탐색 X, EDGE를 탐색하며 O인 지점만 ㄱㄱ
-		for(int i=0; i< board.length; i++) {
-			for(int j=0; j< board[i].length; j++) {
-				// 값이 탐색할지점 o 이며 방문하지 않았을경우 bfs 탐색을 시작함.
-				if(board[i][j] == 0 && !visited[i][j]) {
-					bfs(i,j);
-				}
+		// 꼭지점 중복에 대해 고민
+		for(int i=0; i < col; i++) {
+			if(board[0][i] == 'O' && !visited[0][i]) {
+				bfs(0,i);
 			}
 		}
 		
+		// 0,n 1,n  2,n  3,n ... n,n
+		for(int i=0; i<row; i++) {
+			if(board[i][col - 1] == 'O' && !visited[i][col -1]) {
+				bfs(i, col -1);
+			}
+		}
+		
+		// (n,0) n,(n+1)  n, (n-2) ... n,n
+		for(int i=1; i < col; i++) {
+			if(board[row - 1][i] == 'O' && !visited[row - 1][i]) {
+				bfs(row - 1  , i);
+			}
+		}
+		
+		// (n),0  (n-1),0 ... 0,0
+		for(int i=row - 1; i>0; i--) {
+			if(board[i][0] == 'O' && !visited[i][0]) {
+				bfs(i ,0);
+			}
+		}
 	}
 	private static void bfs(int x, int y) {
 		// TODO Auto-generated method stub
