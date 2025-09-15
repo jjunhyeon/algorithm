@@ -14,7 +14,7 @@ public class LC_SurroundedRegions {
 	public static int row, col;
 	public static int[] xRange = {-1,0,1,0};
 	public static int[] yRange = {0,1,0,-1};
-	
+	public static char[][] copied;
 	
 	public static void main(String[] args) {
 	   char[][] board = {{'X','X','X','X'},{'X','O','O','X'},{'X','X','O','X'},{'X','O','X','X'}};
@@ -28,36 +28,45 @@ public class LC_SurroundedRegions {
 		row = board.length;
 		col = board[0].length;
 		visited = new boolean[row][col];
-		char[][] copied = new char[row][col];
+		copied = new char[row][col];
 		for(int i=0; i<board.length; i++) {
 			copied[i] = board[i].clone();
 		}
 		
 		// 꼭지점 중복에 대해 고민
 		for(int i=0; i < col; i++) {
-			if(board[0][i] == 'O' && !visited[0][i]) {
+			if(!visited[0][i] && board[0][i] == 'O') {
 				bfs(0,i);
 			}
 		}
 		
 		// 0,n 1,n  2,n  3,n ... n,n
 		for(int i=0; i<row; i++) {
-			if(board[i][col - 1] == 'O' && !visited[i][col -1]) {
+			if(!visited[i][col -1] && board[i][col - 1] == 'O' ) {
 				bfs(i, col -1);
 			}
 		}
 		
 		// (n,0) n,(n+1)  n, (n-2) ... n,n
 		for(int i=1; i < col; i++) {
-			if(board[row - 1][i] == 'O' && !visited[row - 1][i]) {
+			if(!visited[row - 1][i] && board[row - 1][i] == 'O' ) {
 				bfs(row - 1  , i);
 			}
 		}
 		
 		// (n),0  (n-1),0 ... 0,0
 		for(int i=row - 1; i>0; i--) {
-			if(board[i][0] == 'O' && !visited[i][0]) {
+			if(!visited[i][0] && board[i][0] == 'O' ) {
 				bfs(i ,0);
+			}
+		}
+		
+		
+		for(int i=0; i<row; i++) {
+			for(int j=0; j<col; j++) {
+				if(board[i][j] == 'O' && !visited[i][j])  {
+					board[i][j] ='X';
+				}
 			}
 		}
 	}
@@ -65,17 +74,22 @@ public class LC_SurroundedRegions {
 		// TODO Auto-generated method stub
 		Queue<int[]> target = new LinkedList<int[]>();
 		target.add(new int[] {x,y});
-		
+
+		// 자기자신 방문처리
+		visited[x][y] = true;
 		while(!target.isEmpty()) {
 			int[] cur = target.poll();
-			
 			for(int i=0; i<4; i++) {
 				int nextX = cur[0] + xRange[i];
 				int nextY = cur[1] + yRange[i];
-				// 정상범위라면
-//				if(nextX >= 0 && nextX < row && nextY >= 0 && nextY < col && !visited[nextX][nextY]) {
-//					visited[nextX][nextY] = true;
-//				}
+				// 정상범위이면서 O 이면서 방문하지 않았다면
+				if(nextX >= 0 && nextX < row && nextY >= 0 && nextY < col && !visited[nextX][nextY] && copied[nextX][nextY] == 'O') {
+					if(copied[x][y] != 'T'){
+						copied[x][y] = 'T';
+					}
+					visited[nextX][nextY] = true;
+					copied[nextX][nextY] = 'T';
+				}
 			}
 		}
 	}
