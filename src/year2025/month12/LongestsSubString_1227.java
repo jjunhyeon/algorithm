@@ -19,21 +19,16 @@ public class LongestsSubString_1227 {
 	private static int solution(String target) {
 		int answer = 0;
 		Map<Character, Integer> map = new HashMap<>();
-		int start =0;
-		int end =0;
+		int idx =0; // index 값
+		int start =0; // slide를 시작하는 지점
 		for(Character item : target.toCharArray()){
-			map.put(item, map.getOrDefault(item, end));
-			if(null != map.get(item) || map.get(item) < start) { // 중복 찾음, start가 더 작을경우
-				// 중복이 있으면 갱신해야지
-				// 중복을 만났다면 start를 갱신해야지
+			// start 이전의 값 조정
+			if(null != map.get(item) && map.get(item) >= start) { 
 				start = map.get(item) + 1;
-				map.put(item, end);
-			} else {
-				end ++;
 			}
-			if(map.size() > answer) {
-				answer = map.size();
-			}
+			answer = Math.max(idx - start + 1, answer);
+			map.put(item, idx);
+ 			idx ++;
 		}
 		return answer;
 	}
